@@ -72,28 +72,33 @@ def finish(store, tenant, payload):
     if payload['objects']:
         return payload
     delete_indexes(tenant, payload)
-    return {}
+    return payload if payload['collections'] or payload.get('mongo') else {}
 
 
 def delete_indexes(tenant, payload):
-    if payload['collections']:
-        index = vector_index.QdrantIndex()
-        try:
-            for collection in payload['collections']:
-                if not collection.get('origin') or collection['origin'] != vector_index.origin():
-                    raise ValueError('Destino original Qdrant não corresponde à configuração atual.')
-                index.delete_document(tenant, payload['document_id'], collection['name'])
-        finally:
-            index.close()
+    delete_current_vectors(tenant, payload)
     if payload.get('mongo'):
         from ..projections import origin
-        if not payload.get('mongo_origin') or payload['mongo_origin'] != origin():
-            raise ValueError('Destino original MongoDB não corresponde à configuração atual.')
-        projection = MongoProjection()
-        try:
-            projection.delete(tenant, payload['document_id'])
-        finally:
-            projection.close()
+        if payload.get('mongo_origin') and payload['mongo_origin'] == origin():
+            projection = MongoProjection()
+            try:
+                projection.delete(tenant, payload['document_id'])
+                payload['mongo'] = False
+            finally:
+                projection.close()
+
+
+def delete_current_vectors(tenant, payload):
+    matching = [item for item in payload['collections'] if item.get('origin') == vector_index.origin()]
+    if not matching:
+        return
+    index = vector_index.QdrantIndex()
+    try:
+        for collection in matching:
+            index.delete_document(tenant, payload['document_id'], collection['name'])
+        payload['collections'] = [item for item in payload['collections'] if item not in matching]
+    finally:
+        index.close()
 
 
 def missing_object_identity(payload):

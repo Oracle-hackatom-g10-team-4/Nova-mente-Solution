@@ -39,6 +39,17 @@ def preserve(existing, supplied):
     return supplied
 
 
+def repaired_collections(existing, supplied):
+    targets = [item.copy() for item in existing]
+    for target in supplied:
+        unknown = next((item for item in targets if item['name'] == target.name and not item.get('origin')), None)
+        if unknown is not None:
+            unknown['origin'] = target.origin
+        elif target.model_dump() not in targets:
+            targets.append(target.model_dump())
+    return targets
+
+
 def repair(payload, manifest):
     if not manifest.reviewed_all_historical_destinations:
         raise ValueError('Confira os registros históricos antes de reconciliar.')
@@ -47,11 +58,7 @@ def repair(payload, manifest):
         receipt = receipts[item.object_key]
         for key in ('namespace', 'bucket'):
             receipt[key] = preserve(receipt.get(key), getattr(item, key))
-    targets = {item['name']: item for item in payload['collections']}
-    for target in manifest.collections:
-        previous = targets.get(target.name, {})
-        targets[target.name] = {'name': target.name, 'origin': preserve(previous.get('origin'), target.origin)}
-    payload['collections'] = list(targets.values())
+    payload['collections'] = repaired_collections(payload['collections'], manifest.collections)
     payload['mongo_origin'] = preserve(payload.get('mongo_origin'), manifest.mongo_origin)
     payload['mongo'] = bool(payload['mongo_origin'])
     targets = set(payload.get('memory_origins', []))

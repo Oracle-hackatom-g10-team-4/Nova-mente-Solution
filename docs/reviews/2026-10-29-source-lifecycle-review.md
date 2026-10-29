@@ -10,10 +10,12 @@ dispensa os checks dos SHAs publicados.
 ## Identificação do candidato
 
 - Branch: `feat/source-lifecycle-auto-atlas`.
-- HEAD/base antes dos commits:
+- Base da feature:
   `0af65d43b513430ef279a3dc3081137c967e5262`.
+- HEAD antes do complemento de múltiplas origens:
+  `94654751eac4e1dd5ae2f684e7c67157d246402b`.
 - Digest das fontes/testes revisados:
-  `1e50c331b5b2b4e36a4c72d09301dbb94819e1a7962104113de66b065ef2a180`.
+  `4612d067201c1a0db4b62c04e81f6e807570cdaef2f794bc4a59482e5a7940ee`.
 - Digest da política, sem alteração:
   `fc97002c0917206cb568e9157b85e2e99ae7b492490357ae0fb5b92dd48330bc`.
 
@@ -78,10 +80,10 @@ e a repetição não refaz efeitos. Tombstones impedem a volta do demo no reiní
 
 Execuções independentes deste revisor:
 
-- **65 testes Python PASS**, incluindo concorrência, rollback, reinício,
+- **66 testes Python PASS**, incluindo concorrência, rollback, reinício,
   proveniência, reconciliação, destinos históricos e limpeza externa simulada.
 - **Seis testes API PASS** de routing e adaptador HTTP, zero skips/retries.
-- **Cinco controles do gate PASS**, mais medição estrutural de **741 símbolos**;
+- **Cinco controles do gate PASS**, mais medição estrutural de **743 símbolos**;
   grafo TypeScript com **107 arestas, zero ciclos/imports não resolvidos**,
   nenhuma falha de
   parsing/fronteira ou regressão bloqueante. Limites e baseline não mudaram;
@@ -92,7 +94,7 @@ Logs próprios: `/tmp/atlas-lifecycle-independent-final-python.log`,
 `/tmp/atlas-lifecycle-independent-final-api.log` e
 `/tmp/atlas-lifecycle-independent-final-quality.log`.
 
-Também li os logs finais do implementador: **50 API + 65 Python + cinco
+Também li os logs finais do implementador: **50 API + 66 Python + cinco
 scripts**, tipos, builds Next/Nest/Eve, contrato de ambiente de 62 referências
 e smoke com dependências de produção passaram. **20 E2E desktop/mobile
 passaram em 37,3 s**, sem retries: remoção real local e seus efeitos, replay,
@@ -132,3 +134,32 @@ estão explicitados na spec. SAST/SBOM e mutation testing não foram executados.
 O revisor não alterou implementação, testes, dependências ou política, não
 executou exclusão de dados em serviços reais e não fez commit, push ou review
 formal no GitHub. O único arquivo escrito nesta revisão é este parecer.
+
+## Complemento antes do merge — múltiplas origens Qdrant
+
+O implementador identificou e corrigiu um problema adicional depois do primeiro
+parecer, vinculado ao digest `1e50c331b5b2b4e36a4c72d09301dbb94819e1a7962104113de66b065ef2a180`:
+limpar duas origens com a mesma configuração impedia concluir o trabalho, e a
+reconciliação podia colapsar coleções de nomes iguais em hosts diferentes.
+Revisei o delta limitado a cleanup, reconcile e seu teste. Agora cada tentativa
+limpa os destinos da configuração atual e persiste os restantes; MongoDB
+incompatível permanece pendente. A conclusão exige listas/flags esvaziados.
+A reconciliação preserva identidades distintas de mesmo nome.
+
+**PASS local renovado** no digest atualizado no início deste documento.
+Executei novamente todos os **66 Python** e os cinco controles/medição de
+qualidade: PASS, zero skips, 743 símbolos e grafo TypeScript inalterado.
+Confirmei também, diretamente em service.retry com destino errado, que o
+resultado continua cleanup_pending com attention_required, sem sequer
+construir o adaptador Qdrant e sem perder o destino original no outbox.
+A adaptação do teste de mismatch troca a exceção interna por esse contrato
+pendente explícito; não reduz a proteção pública nem autoriza destino errado.
+O teste A→B exige progresso durável, duas exclusões e preservação de ambas as
+identidades no manifesto. As evidências E2E anteriores continuam aplicáveis
+à UI inalterada; não houve novo ensaio de fornecedores reais.
+
+Logs independentes adicionais:
+`/tmp/atlas-lifecycle-independent-multi-origin-python.log` e
+`/tmp/atlas-lifecycle-independent-multi-origin-quality.log`.
+Nenhum comando independente permanece em execução. Checks dos PRs no SHA
+complementar ainda precisam ser observados antes do merge autorizado.

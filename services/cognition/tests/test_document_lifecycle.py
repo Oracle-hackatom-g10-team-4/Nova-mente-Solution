@@ -283,7 +283,8 @@ print('restart-erasure-ok')
         with patch.dict(os.environ, {'QDRANT_URL': 'https://other.example'}):
             self.assertTrue(cleanup.attention(payload))
             with patch.object(vector_index.QdrantIndex, 'delete_document') as delete:
-                with self.assertRaises(ValueError): cleanup.delete_indexes('alice', payload)
+                cleanup.delete_indexes('alice', payload)
+                self.assertEqual(payload['collections'], [{'name': 'atlas_test', 'origin': 'a'*64}])
                 delete.assert_not_called()
         self.assertTrue(cleanup.attention({'objects': [{'provider': 'oci'}]}))
         from atlas.documents.reconcile import preserve
@@ -320,6 +321,30 @@ print('restart-erasure-ok')
                 self.assertEqual(service.retry(self.store, 'alice', self.a['id'])['status'], 'deleted')
         with self.store.db() as db:
             self.assertEqual(db.execute('SELECT COUNT(*) FROM memory_destinations WHERE tenant=?', ('alice',)).fetchone()[0], 0)
+
+    def test_multiple_historical_qdrant_destinations_are_cleaned_progressively(self):
+        from atlas import vector_index
+        with patch.dict(os.environ, {'QDRANT_URL': 'https://first.example'}): first = vector_index.origin()
+        with patch.dict(os.environ, {'QDRANT_URL': 'https://second.example'}): second = vector_index.origin()
+        with self.store.db() as db:
+            values = {'version': 1, 'qdrant_targets': [{'name': 'atlas_old', 'origin': first}, {'name': 'atlas_old', 'origin': second}]}
+            db.execute('UPDATE documents SET integrations=? WHERE tenant=? AND id=?', (json.dumps(values), 'alice', self.a['id']))
+        self.assertEqual(service.remove(self.store, self.dreamer, 'alice', self.a['id'])['status'], 'cleanup_pending')
+        index = MagicMock()
+        with patch.object(vector_index, 'QdrantIndex', return_value=index):
+            with patch.dict(os.environ, {'QDRANT_URL': 'https://first.example'}):
+                self.assertEqual(service.retry(self.store, 'alice', self.a['id'])['status'], 'cleanup_pending')
+            with self.store.db() as db:
+                payload = json.loads(db.execute('SELECT payload FROM document_removals WHERE tenant=? AND id=?', ('alice', self.a['id'])).fetchone()[0])
+            self.assertEqual(payload['collections'], [{'name': 'atlas_old', 'origin': second}])
+            from atlas.documents.reconcile import Manifest, repair
+            manifest = Manifest(tenant='alice', document_id=self.a['id'], reviewed_all_historical_destinations=True, collections=[{'name': 'atlas_old', 'origin': first}])
+            repaired = repair(json.loads(json.dumps(payload)), manifest)
+            self.assertCountEqual(repaired['collections'], [{'name': 'atlas_old', 'origin': first}, {'name': 'atlas_old', 'origin': second}])
+            with patch.dict(os.environ, {'QDRANT_URL': 'https://second.example'}):
+                self.assertEqual(service.retry(self.store, 'alice', self.a['id'])['status'], 'deleted')
+        self.assertEqual(index.delete_document.call_count, 2)
+        index.delete_document.assert_called_with('alice', self.a['id'], 'atlas_old')
 
 
 if __name__ == '__main__': unittest.main()
