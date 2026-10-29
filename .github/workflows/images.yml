@@ -63,7 +63,9 @@ jobs:
           labels: |
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
             org.opencontainers.image.revision=${{ github.sha }}
-          provenance: mode=min
+          # Docker's local exporter cannot load the attestation manifest index.
+          # Keep provenance for published images; local cognition still runs the HTTP smoke below.
+          provenance: ${{ matrix.target == 'cognition' && !(github.event_name == 'workflow_dispatch' && inputs.publish && github.ref == 'refs/heads/main') && 'false' || 'mode=min' }}
       - name: Verify cognition startup and HTTP authentication in the built image
         if: matrix.target == 'cognition'
         env:

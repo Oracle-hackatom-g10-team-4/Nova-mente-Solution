@@ -12,10 +12,10 @@ dispensa os checks dos SHAs publicados.
 - Branch: `feat/source-lifecycle-auto-atlas`.
 - Base da feature:
   `0af65d43b513430ef279a3dc3081137c967e5262`.
-- HEAD antes do complemento de múltiplas origens:
-  `94654751eac4e1dd5ae2f684e7c67157d246402b`.
+- HEAD antes do ajuste complementar de compatibilidade CI:
+  `56fc2d259620cbbad25b223f2800d3d6c3b0d963`.
 - Digest das fontes/testes revisados:
-  `4612d067201c1a0db4b62c04e81f6e807570cdaef2f794bc4a59482e5a7940ee`.
+  `ec14fede75b8338459d7adedfdc3cbad45fc2f60cdbc4978088d63c7ec598c9e`.
 - Digest da política, sem alteração:
   `fc97002c0917206cb568e9157b85e2e99ae7b492490357ae0fb5b92dd48330bc`.
 
@@ -146,7 +146,9 @@ limpa os destinos da configuração atual e persiste os restantes; MongoDB
 incompatível permanece pendente. A conclusão exige listas/flags esvaziados.
 A reconciliação preserva identidades distintas de mesmo nome.
 
-**PASS local renovado** no digest atualizado no início deste documento.
+**PASS local renovado** no digest
+`4612d067201c1a0db4b62c04e81f6e807570cdaef2f794bc4a59482e5a7940ee`
+antes do ajuste de CI registrado a seguir.
 Executei novamente todos os **66 Python** e os cinco controles/medição de
 qualidade: PASS, zero skips, 743 símbolos e grafo TypeScript inalterado.
 Confirmei também, diretamente em service.retry com destino errado, que o
@@ -163,3 +165,22 @@ Logs independentes adicionais:
 `/tmp/atlas-lifecycle-independent-multi-origin-quality.log`.
 Nenhum comando independente permanece em execução. Checks dos PRs no SHA
 complementar ainda precisam ser observados antes do merge autorizado.
+
+## Compatibilidade do exportador Docker no CI
+
+O CI real informou falha no exporter cognition: `docker exporter does not
+currently support exporting manifest lists`. O índice de attestation produzido
+por provenance mode=min é incompatível com o carregamento no Docker clássico
+usado pelo smoke. Revisei o delta de uma propriedade em images.yml: provenance
+recebe a string `'false'` somente na mesma condição de cognition com load local
+sem publicação; as imagens publicadas no GHCR e os outros três targets mantêm
+mode=min. A string evita o fallback incorreto de `condição && false || valor`.
+O smoke autenticado sobre a imagem construída continua obrigatório e inalterado.
+
+**PASS de engenharia local para esse ajuste**, no digest atual do cabeçalho,
+recalculado e confirmado contra o relatório quality PASS. Não houve alteração
+de produto, testes, thresholds ou critérios de aprovação. Não executei novo
+build local nesta revisão do workflow. A comprovação da correção é o novo run
+real de Actions no SHA publicado; o erro do run anterior não fica resolvido por
+este parecer. **Não aprovo merge com cognition falhando ou pendente**: todos
+os checks pertinentes do novo SHA precisam ser observados, sem bypass.
