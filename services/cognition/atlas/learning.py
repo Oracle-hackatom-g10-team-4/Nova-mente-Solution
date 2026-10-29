@@ -1,3 +1,4 @@
+from .documents.locking import synchronized
 import json
 from . import providers
 from .models import Generation, RemoteContent, EducationalPackage
@@ -5,6 +6,7 @@ from .rag import retrieve
 from .store import uid, now
 from .rollout import online_rollout
 from .metadata import learning_metadata
+from .study_request import recipe
 
 from .catalog import PERSONAS
 
@@ -32,8 +34,11 @@ def active_policy(store, tenant):
         row = db.execute("SELECT instruction FROM policies WHERE tenant=? AND status='active' AND EXISTS(SELECT 1 FROM consent WHERE tenant=? AND enabled=1) ORDER BY version DESC LIMIT 1", (tenant, tenant)).fetchone()
     return json.loads(row[0]) if row else None
 
+@synchronized
 def generate(store, tenant, request: Generation, memory_snapshot=None):
     from .models import Decision
+    from .documents.service import ensure_ready
+    ensure_ready(store, tenant)
     memory_snapshot = memory_snapshot or store.memory_state(tenant)
     decision = request.decision or Decision(method="feynman" if request.profile == "beginner" else "first_principles", rag_mode="hybrid", reason="Política local explícita.")
     request.decision = decision
@@ -95,6 +100,7 @@ def generate(store, tenant, request: Generation, memory_snapshot=None):
             package["conteudo_adaptado"]["itens"].append(item)
     package["agent_trace"].append({"agent_id": request.agent_id, "action": "validar", "summary": "Âncoras conferidas. Judge: " + package["quality"]["judge_verdict"], "kind": "review"})
     package["metadados"] = learning_metadata(request, package, citations)
+    package['study_request'] = recipe(request)
     receipt = store.blob(tenant, f"packages/{package_id}.json", json.dumps(package, ensure_ascii=False).encode())
     package["storage"] = receipt
     package = EducationalPackage.model_validate(package).model_dump(exclude_none=True)

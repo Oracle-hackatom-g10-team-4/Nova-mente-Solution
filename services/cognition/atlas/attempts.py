@@ -29,6 +29,8 @@ def previous_result(db, tenant, package_id, submission):
 def register(store, tenant, package_id, submission, expected):
     with store.db() as db:
         db.execute("BEGIN IMMEDIATE")
+        if not db.execute("SELECT 1 FROM packages WHERE tenant=? AND id=?", (tenant, package_id)).fetchone():
+            raise LookupError("Material não encontrado.")
         previous = previous_result(db, tenant, package_id, submission)
         if previous is not None:
             return previous, False

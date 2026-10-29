@@ -43,6 +43,17 @@ async def limited(function, *args):
     async with work:
         return await run_in_threadpool(credentials.scoped, function, *args)
 
+async def deletion_worker():
+    from .documents import service
+    while True:
+        rows = service.due(store)
+        for row in rows:
+            try:
+                await limited(service.retry, store, row['tenant'], row['id'])
+            except (HTTPException, providers.ProviderError):
+                break
+        await asyncio.sleep(10)
+
 async def dream_worker():
     while True:
         if os.getenv("ATLAS_JOB_RUNNER", "local") == "local":
@@ -72,7 +83,9 @@ async def lifespan(app):
     if not os.getenv("ATLAS_INTERNAL_TOKEN"):
         raise RuntimeError("ATLAS_INTERNAL_TOKEN precisa ser configurado no servidor.")
     tenant = os.getenv("ATLAS_TENANT_ID", "local-workspace")
-    if os.getenv("ATLAS_SEED_DEMO", "1") == "1" and not store.documents(tenant):
+    with store.db() as db:
+        removed_before = db.execute('SELECT 1 FROM document_removals WHERE tenant=? LIMIT 1', (tenant,)).fetchone()
+    if os.getenv("ATLAS_SEED_DEMO", "1") == "1" and not store.documents(tenant) and not removed_before:
         sample = """# Primeiros passos em redes na OCI
 
 Uma Virtual Cloud Network (VCN) é uma rede virtual privada configurável na Oracle Cloud Infrastructure. Sub-redes organizam recursos dentro da VCN. Uma sub-rede pública pode possuir acesso por Internet Gateway quando rotas e regras de segurança permitem.
@@ -89,12 +102,14 @@ OCI Object Storage armazena documentos e pacotes JSON em buckets. Bibliotecas pr
 Fonte demonstrativa escrita pela equipe Atlas, não um PDF oficial da Oracle. Confira a documentação oficial antes de operar infraestrutura real.
 """
         await run_in_threadpool(ingest, store, tenant, "Primeiros passos na OCI.md", sample.encode())
+    deletion = asyncio.create_task(deletion_worker())
     scheduler = asyncio.create_task(dream_schedule())
     worker = asyncio.create_task(dream_worker())
     yield
+    deletion.cancel()
     scheduler.cancel()
     worker.cancel()
-    await asyncio.gather(scheduler, worker, return_exceptions=True)
+    await asyncio.gather(deletion, scheduler, worker, return_exceptions=True)
 
 app = FastAPI(title="Atlas Cognition & Dreamer", version="0.1.0", lifespan=lifespan)
 
@@ -120,7 +135,8 @@ def health():
 
 @app.get("/v1/bootstrap")
 def bootstrap(tenant=Depends(identity)):
-    return {"agents": AGENTS, "documents": store.documents(tenant), "progress": store.progress(tenant), "groups": store.groups(tenant), "capabilities": {"llm": "remote" if providers.llm_ready() else "extractive_demo", "embeddings": "remote" if credentials.configured("embeddings") else "local_hash_demo", "web_search": credentials.configured("search"), "storage": os.getenv("STORAGE_PROVIDER", "local"), "deployment": "local"}}
+    from .documents.service import pending
+    return {"pending_removals": pending(store, tenant), "agents": AGENTS, "documents": store.documents(tenant), "progress": store.progress(tenant), "groups": store.groups(tenant), "capabilities": {"llm": "remote" if providers.llm_ready() else "extractive_demo", "embeddings": "remote" if credentials.configured("embeddings") else "local_hash_demo", "web_search": credentials.configured("search"), "storage": os.getenv("STORAGE_PROVIDER", "local"), "deployment": "local"}}
 
 @app.get("/v1/documents")
 def documents(tenant=Depends(identity)):
@@ -166,6 +182,8 @@ def progress(tenant=Depends(identity)):
 
 from .community.http import router as community_router
 from .trails.http import router as trails_router
+from .documents.http import router as documents_router
+app.include_router(documents_router(store, dreamer, identity, limited))
 app.include_router(community_router(store, identity))
 app.include_router(trails_router(store, identity))
 

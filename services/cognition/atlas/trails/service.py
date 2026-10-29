@@ -1,3 +1,4 @@
+from ..documents.locking import synchronized
 """Path use cases over the canonical Store. All progression is server-owned."""
 import json
 from ..store import uid, now
@@ -24,6 +25,7 @@ def list_trails(store, tenant):
     return [present(json.loads(row[0])) for row in rows]
 
 
+@synchronized
 def create(store, tenant, request):
     docs = {doc["id"]: doc for doc in store.documents(tenant)}
     ids = list(dict.fromkeys(request.document_ids))
@@ -65,6 +67,7 @@ def _locked(db, tenant, trail_id, step_id):
     return trail, next(step for step in trail["steps"] if step["id"] == step_id)
 
 
+@synchronized
 def attach(store, tenant, trail_id, step_id, package_id):
     generation_input(store, tenant, trail_id, step_id)
     row = store.package(tenant, package_id)
@@ -91,6 +94,7 @@ def _completion_evidence(db, tenant, step):
     return "server_verified_quiz"
 
 
+@synchronized
 def complete(store, tenant, trail_id, step_id):
     with store.db() as db:
         trail, step = _locked(db, tenant, trail_id, step_id)
