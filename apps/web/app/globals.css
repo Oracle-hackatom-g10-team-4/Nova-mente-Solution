@@ -441,3 +441,15 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
   .landing-button{transition:none}
   .landing-button:hover{transform:none}
 }
+
+/* Focus the studio on sources and the learning goal; optional controls unfold. */
+.automatic-route{display:flex;gap:12px;align-items:flex-start;padding:18px 0;margin:0;color:var(--text,#ededee)}
+.automatic-route>svg{flex:none;color:#85e7b8;margin-top:2px}
+.automatic-route strong,.automatic-route small{display:block}
+.automatic-route small{color:#a0a5af;max-width:62ch;margin-top:5px;line-height:1.55}
+.studio-options .advanced{margin-top:0;margin-bottom:18px}
+.studio-options .matrix{margin-top:16px}
+.removal-impact{padding-left:20px;line-height:1.65;color:#b9bdc5}
+.removal-impact li+li{margin-top:8px}
+.removal-regenerate{display:flex;gap:10px;align-items:flex-start;margin:18px 0;font-size:14px;line-height:1.5}
+.removal-regenerate input{width:auto;flex:none;margin-top:4px}
