@@ -60,3 +60,10 @@ flowchart LR
 Workflows não recebem chaves de modelos ou OCI. `GITHUB_TOKEN` com packages:write é usado apenas na publicação manual em `main`. PRs não publicam imagens. Não há SSH automático nem criação de VM. `compose.deploy.yaml` só referencia imagens prontas; `scripts/deploy-pull.sh` exige SHA imutável e executa pull/healthchecks sem build.
 
 GHCR guarda software, não documentos privados, bancos ou backups. OCI Object Storage guarda os dados exigidos pelo edital. OCIR é alternativa de registry, sem obrigação no documento e sujeito a cotas/custos. Os limites de RAM mantêm a meta, mas precisam de medição sob IA real. Guia operacional: `docs/CONFIGURACAO_E_DEPLOY.md`.
+
+## Ciclo de vida das fontes
+
+Remoção transacional, outbox durável, destinos originais, reconciliação legada e
+escolha automática de tutor estão descritos em [source-lifecycle.md](source-lifecycle.md).
+O estúdio conserva as opções manuais em “Personalizar este estudo”. As configurações
+existentes continuam suficientes; a mudança não adiciona chaves ou serviços obrigatórios.

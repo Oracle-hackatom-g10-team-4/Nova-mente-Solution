@@ -57,6 +57,23 @@ Para publicar esta entrega, use `bash scripts/push-branch-both.sh`; o script ant
 
 As trilhas completas geradas por LLM, a comunidade multiusuário, a memória coletiva e o grafo físico editável ainda são evolução do produto. O grafo inicial representa fontes locais. A pesquisa web depende de Firecrawl configurado e da ferramenta de agente; ainda não existe um buscador web completo na interface. Sem provedores de geração e judge, o Dreamer não promove uma melhoria avaliada.
 
+## Remover fontes e estudar com tutor automático
+
+No estúdio, “Escolher tutor por mim” usa o Jev quando configurado, com fallback
+local declarado. “Personalizar este estudo” permite escolher tutor, método,
+formato e perfil manualmente. O chat individual continua com seu Atlas escolhido.
+
+Cada fonte tem a ação “Remover fonte”. A confirmação mostra materiais, trilhas e XP
+afetados e avisa que todo o histórico de conversas/memória pedagógica será limpo,
+pois o legado não permite separar todos os trechos por origem. Outros documentos
+e sua preferência de consentimento permanecem. Você pode optar por refazer o
+material aberto usando somente as fontes originais restantes, com os mesmos ajustes.
+
+Se um serviço externo estiver indisponível ou faltar proveniência antiga, aparece
+uma pendência; geração aguarda a limpeza confirmada. Fechar a janela permite seguir
+navegando. Reenviar o arquivo após concluir cria uma nova fonte. Guia administrativo,
+limites da exclusão e mapa do código: [ciclo de vida das fontes](docs/architecture/source-lifecycle.md).
+
 ## Antes de abrir o terminal
 
 **Terminal** é a janela em que você digita comandos. **Raiz do projeto** é a pasta que contém este README, `package.json`, `apps/` e `services/`.
