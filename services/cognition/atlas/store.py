@@ -118,20 +118,8 @@ class Store:
 
     def event(self, tenant, kind, payload, expected_revision=None):
         if os.getenv("MEMORY_SERVICE_URL"):
-            import httpx
-            from .providers import safe_base, ProviderError
-            base = safe_base(os.environ["MEMORY_SERVICE_URL"])
-            headers = {"Authorization": "Bearer " + os.environ["MEMORY_SERVICE_TOKEN"], "x-atlas-tenant": tenant}
-            try:
-                status = httpx.get(base + "/v1/dreamer/status", headers=headers, timeout=10)
-                status.raise_for_status()
-                state = status.json()
-                if state.get("consent") and (expected_revision is None or state.get("revision") == expected_revision):
-                    response = httpx.post(base + "/v1/dreamer/experiences", json={"kind": kind, "payload": payload, "revision": state["revision"]}, headers=headers, timeout=10)
-                    response.raise_for_status()
-            except (httpx.HTTPError, ValueError) as exc:
-                raise ProviderError("A memória externa está indisponível. Não foram enviados dados sem consentimento.") from exc
-            return
+            from .documents.memory import publish
+            return publish(self, tenant, kind, payload, expected_revision)
         with self.db() as db:
             db.execute("BEGIN IMMEDIATE")
             consent = db.execute("SELECT enabled FROM consent WHERE tenant=?", (tenant,)).fetchone()
@@ -142,18 +130,22 @@ class Store:
                 if kind == "generation" and payload.get("replay"):
                     replay = payload["replay"]
                     db.execute("INSERT OR IGNORE INTO replay_cases VALUES(?,?,?,?)", (tenant, replay["package"]["id"], json.dumps(replay["package"], ensure_ascii=False), json.dumps(replay["input"], ensure_ascii=False)))
-                    execution = payload.get("execution")
-                    if execution:
-                        db.execute("INSERT OR IGNORE INTO agent_runs VALUES(?,?,?,?)", (tenant,replay["package"]["id"],json.dumps(execution),now()))
-                        db.execute("DELETE FROM agent_runs WHERE tenant=? AND id NOT IN (SELECT id FROM agent_runs WHERE tenant=? ORDER BY rowid DESC LIMIT 100)", (tenant,tenant))
-                    world = payload.get("dream_world")
-                    if replay["package"]["status"] == "ready" and world and len(world.get("nodes", [])) >= 2 and all(n.get("verdict") == "supported" for n in world["nodes"]):
-                        db.execute("INSERT OR IGNORE INTO dream_worlds VALUES(?,?,?,?)", (tenant, replay["package"]["id"], json.dumps(world), now()))
-                        db.execute("DELETE FROM dream_worlds WHERE tenant=? AND id NOT IN (SELECT id FROM dream_worlds WHERE tenant=? ORDER BY rowid DESC LIMIT 30)", (tenant, tenant))
+                    self.record_execution(db, tenant, replay, payload)
+                    self.record_world(db, tenant, replay, payload.get("dream_world"))
                     db.execute("DELETE FROM replay_cases WHERE tenant=? AND id NOT IN (SELECT id FROM replay_cases WHERE tenant=? ORDER BY rowid DESC LIMIT 30)", (tenant, tenant))
                 db.execute("DELETE FROM memory_events WHERE tenant=? AND id NOT IN (SELECT id FROM memory_events WHERE tenant=? ORDER BY created_at DESC LIMIT 1000)", (tenant, tenant))
                 return True
             return False
+
+    def record_execution(self, db, tenant, replay, payload):
+        if payload.get("execution"):
+            db.execute("INSERT OR IGNORE INTO agent_runs VALUES(?,?,?,?)", (tenant,replay["package"]["id"],json.dumps(payload["execution"]),now()))
+            db.execute("DELETE FROM agent_runs WHERE tenant=? AND id NOT IN (SELECT id FROM agent_runs WHERE tenant=? ORDER BY rowid DESC LIMIT 100)", (tenant,tenant))
+
+    def record_world(self, db, tenant, replay, world):
+        if replay["package"]["status"] == "ready" and world and len(world.get("nodes", [])) >= 2 and all(n.get("verdict") == "supported" for n in world["nodes"]):
+            db.execute("INSERT OR IGNORE INTO dream_worlds VALUES(?,?,?,?)", (tenant, replay["package"]["id"], json.dumps(world), now()))
+            db.execute("DELETE FROM dream_worlds WHERE tenant=? AND id NOT IN (SELECT id FROM dream_worlds WHERE tenant=? ORDER BY rowid DESC LIMIT 30)", (tenant, tenant))
 
     def groups(self, tenant):
         with self.db() as db:
