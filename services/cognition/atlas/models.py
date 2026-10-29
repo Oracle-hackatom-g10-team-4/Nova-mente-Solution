@@ -10,6 +10,10 @@ class Decision(StrictModel):
     reason: str = Field(min_length=1, max_length=1000)
     source: Literal["policy", "typesafe"] = "policy"
 
+    agent_id: Literal["nilo", "lumi", "prisma", "fio", "soma"] | None = None
+    agent_source: Literal["manual", "policy", "typesafe"] | None = None
+    agent_reason: str | None = Field(default=None, max_length=500)
+
 class Generation(StrictModel):
     document_ids: list[str] = Field(min_length=1, max_length=8)
     goal: str = Field(min_length=3, max_length=2000)
@@ -92,6 +96,9 @@ class StorageReceipt(StrictModel):
     object_key: str
     status: Literal["stored", "verified"]
 
+    namespace: str | None = Field(default=None, max_length=256)
+    bucket: str | None = Field(default=None, max_length=256)
+
 class LearningMetadata(StrictModel):
     perfil_aplicado: str
     formato_gerado: str
@@ -102,7 +109,18 @@ class LearningMetadata(StrictModel):
     pre_requisitos: list[str]
     pre_requisitos_status: Literal["nao_inferidos"]
 
+class StudyRequest(StrictModel):
+    document_ids: list[str]
+    goal: str
+    profile: Literal['beginner', 'developer', 'architect', 'executive']
+    format: Literal['tutorial', 'flashcards', 'quiz', 'summary']
+    sector: Literal['general', 'fintech', 'health', 'ecommerce']
+    agent_id: Literal['auto', 'nilo', 'lumi', 'prisma', 'fio', 'soma']
+    method: Literal['auto', 'socratic', 'feynman', 'first_principles', 'warburg']
+    rag_mode: Literal['auto', 'vector', 'hybrid', 'lm']
+
 class EducationalPackage(StrictModel):
+    study_request: StudyRequest | None = None
     id: str
     schema_version: Literal["1.0"]
     status: Literal["ready", "abstained"]

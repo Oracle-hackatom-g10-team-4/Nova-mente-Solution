@@ -2,10 +2,19 @@
 import hashlib
 import json
 import os
+import re
 import uuid
 from urllib.parse import urlsplit
 import httpx
 from .providers import ProviderError
+
+def origin():
+    return hashlib.sha256(os.getenv('QDRANT_URL', '').rstrip('/').encode()).hexdigest()
+
+def collection_name(model, dimension, generation=""):
+    suffix = hashlib.sha256(f"{model}:{dimension}".encode()).hexdigest()[:20]
+    return "atlas_" + suffix + ("_" + generation if generation else "")
+
 
 def enabled():
     backend = os.getenv("VECTOR_BACKEND", "sqlite")
@@ -37,8 +46,7 @@ class QdrantIndex:
             raise ProviderError("Qdrant configurado está indisponível. Não houve fallback silencioso para outro índice.") from exc
 
     def collection(self, model, dimension, generation=""):
-        suffix = hashlib.sha256(f"{model}:{dimension}".encode()).hexdigest()[:20]
-        name = "atlas_" + suffix + ("_" + generation if generation else "")
+        name = collection_name(model, dimension, generation)
         if self.request("GET",f"/collections/{name}",missing=True) is None:
             self.request("PUT",f"/collections/{name}",{"vectors":{"size":dimension,"distance":"Cosine","on_disk":True},"hnsw_config":{"on_disk":True}})
             for field in ("tenant", "doc_id", "model"):
@@ -55,6 +63,12 @@ class QdrantIndex:
                 points.append({"id":str(uuid.uuid5(uuid.NAMESPACE_URL,tenant+":"+row["id"])),"vector":vector,"payload":{"tenant":tenant,"doc_id":row["doc_id"],"section_id":row["id"],"model":model}})
             self.request("PUT",f"/collections/{name}/points?wait=true",{"points":points})
         return name
+
+    def delete_document(self, tenant, doc_id, collection):
+        if not isinstance(collection, str) or not re.fullmatch(r"atlas_[a-zA-Z0-9_]+", collection):
+            raise ProviderError("Referência de coleção Qdrant inválida.")
+        self.request("POST", f"/collections/{collection}/points/delete?wait=true", {"filter": {"must": [
+            {"key": "tenant", "match": {"value": tenant}}, {"key": "doc_id", "match": {"value": doc_id}}]}}, missing=True)
 
     def search(self, tenant, rows, vector, model):
         allowed = {row["id"]:row for row in rows}

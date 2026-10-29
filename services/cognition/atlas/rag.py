@@ -1,3 +1,4 @@
+from .documents.locking import synchronized
 import hashlib
 import json
 import math
@@ -11,6 +12,7 @@ from pathlib import Path
 from . import providers, credentials
 from . import vector_index
 from .projections import project
+from .documents import provenance
 from .store import now, uid
 
 STOP = set("a o as os de da do das dos e em um uma para por com que qual quais como na no nas nos se ao aos eu voce me este esta esse isso sobre the is to of and or in on".split())
@@ -70,6 +72,7 @@ def parse(filename, data):
         raise ValueError("Texto acima de 300 mil caracteres.")
     return pages, mime
 
+@synchronized
 def ingest(store, tenant, filename, data):
     validate_upload(filename, data)
     digest = hashlib.sha256(data).hexdigest()
@@ -106,9 +109,9 @@ def ingest(store, tenant, filename, data):
             index.close()
     receipt = store.blob(tenant, f"documents/{doc_id}/original{Path(filename).suffix.lower()}", data)
     with store.db() as db:
-        db.execute("INSERT INTO documents(tenant,id,title,filename,media_type,pages,hash,created_at,storage,page_count,characters) VALUES(?,?,?,?,?,?,?,?,?,?,?)", (tenant, doc_id, Path(filename).stem, filename, mime, json.dumps(pages, ensure_ascii=False), digest, now(), json.dumps(receipt), len(pages), sum(len(page["text"]) for page in pages)))
+        db.execute("INSERT INTO documents(tenant,id,title,filename,media_type,pages,hash,created_at,storage,page_count,characters,integrations) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)", (tenant, doc_id, Path(filename).stem, filename, mime, json.dumps(pages, ensure_ascii=False), digest, now(), json.dumps(receipt), len(pages), sum(len(page["text"]) for page in pages), provenance.integrations()))
         for passage, vector in zip(passages, vectors):
-            db.execute("INSERT INTO passages VALUES(?,?,?,?,?,?)", (tenant, doc_id, passage["id"], passage["page"], passage["text"], json.dumps({"model": embedding_id, "values": vector, "collection": collection})))
+            db.execute("INSERT INTO passages VALUES(?,?,?,?,?,?)", (tenant, doc_id, passage["id"], passage["page"], passage["text"], provenance.vector(vector, embedding_id, collection)))
             db.execute("INSERT INTO passages_fts VALUES(?,?,?,?)", (tenant, doc_id, passage["id"], passage["text"]))
     result = next(doc for doc in store.documents(tenant) if doc["id"] == doc_id)
     result["metadata_projection"] = project(tenant,result)

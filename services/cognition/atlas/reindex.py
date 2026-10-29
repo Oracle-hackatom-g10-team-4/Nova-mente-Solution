@@ -6,7 +6,10 @@ from . import vector_index
 from . import providers, credentials
 from .rag import local_vector
 from .store import Store
+from .documents.locking import synchronized
+from .documents.provenance import remember_vectors
 
+@synchronized
 def reindex(store, tenant):
     return credentials.scoped(_reindex, store, tenant)
 
@@ -25,8 +28,11 @@ def _reindex(store, tenant):
         index=vector_index.QdrantIndex()
         try:
             vectors=[json.loads(update[0])["values"] for update in updates]
-            collection=index.upsert(tenant,rows,vectors,model,uuid.uuid4().hex[:12])
-            updates=[(json.dumps({**json.loads(value),"collection":collection}),owner,section) for value,owner,section in updates]
+            generation=uuid.uuid4().hex[:12]
+            collection=vector_index.collection_name(model,len(vectors[0]),generation)
+            remember_vectors(store,tenant,rows,collection)
+            collection=index.upsert(tenant,rows,vectors,model,generation)
+            updates=[(json.dumps({**json.loads(value),"collection":collection,"origin":vector_index.origin()}),owner,section) for value,owner,section in updates]
         finally:
             index.close()
     with store.db() as db:

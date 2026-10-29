@@ -21,6 +21,9 @@ class Store:
         with self.db() as db:
             db.executescript("""
                 PRAGMA journal_mode=WAL;
+                CREATE TABLE IF NOT EXISTS memory_destinations(tenant TEXT,origin TEXT,PRIMARY KEY(tenant,origin));
+                CREATE TABLE IF NOT EXISTS memory_source_resets(tenant TEXT,id TEXT,PRIMARY KEY(tenant,id));
+                CREATE TABLE IF NOT EXISTS document_removals(tenant TEXT,id TEXT,status TEXT,payload TEXT,impact TEXT,created_at TEXT,last_attempt REAL NOT NULL DEFAULT 0,next_attempt REAL NOT NULL DEFAULT 0,attempts INTEGER NOT NULL DEFAULT 0,PRIMARY KEY(tenant,id));
                 CREATE TABLE IF NOT EXISTS documents(tenant TEXT,id TEXT,title TEXT,filename TEXT,media_type TEXT,pages TEXT,hash TEXT,created_at TEXT,storage TEXT,PRIMARY KEY(tenant,id));
                 CREATE TABLE IF NOT EXISTS passages(tenant TEXT,doc_id TEXT,id TEXT,page INTEGER,text TEXT,vector TEXT,PRIMARY KEY(tenant,id));
                 CREATE VIRTUAL TABLE IF NOT EXISTS passages_fts USING fts5(tenant UNINDEXED,doc_id UNINDEXED,id UNINDEXED,text);
@@ -47,6 +50,12 @@ class Store:
             for field in ("page_count", "characters"):
                 if field not in columns:
                     db.execute(f"ALTER TABLE documents ADD COLUMN {field} INTEGER NOT NULL DEFAULT 0")
+            if 'integrations' not in columns:
+                db.execute("ALTER TABLE documents ADD COLUMN integrations TEXT NOT NULL DEFAULT '{}'")
+            removal_columns = {row["name"] for row in db.execute("PRAGMA table_info(document_removals)")}
+            for field, kind in (("last_attempt", "REAL"), ("next_attempt", "REAL"), ("attempts", "INTEGER")):
+                if field not in removal_columns:
+                    db.execute(f"ALTER TABLE document_removals ADD COLUMN {field} {kind} NOT NULL DEFAULT 0")
             db.execute("UPDATE documents SET page_count=json_array_length(pages),characters=(SELECT COALESCE(SUM(length(json_extract(value,'$.text'))),0) FROM json_each(documents.pages)) WHERE page_count=0")
             db.execute("CREATE INDEX IF NOT EXISTS documents_by_date ON documents(tenant,created_at)")
             db.execute("CREATE INDEX IF NOT EXISTS passages_by_document ON passages(tenant,doc_id)")
@@ -55,6 +64,7 @@ class Store:
     def db(self):
         db = sqlite3.connect(self.root / "atlas.sqlite3", timeout=15)
         db.row_factory = sqlite3.Row
+        db.execute("PRAGMA secure_delete=ON")
         try:
             yield db
             db.commit()
@@ -174,4 +184,4 @@ class Store:
         received = client.get_object(namespace, bucket, object_key).data.content
         if hashlib.sha256(received).digest() != hashlib.sha256(content).digest():
             raise RuntimeError("Falha na conferência do objeto OCI.")
-        return {"provider": "oci", "object_key": object_key, "status": "verified"}
+        return {"provider": "oci", "object_key": object_key, "status": "verified", "namespace": namespace, "bucket": bucket}
