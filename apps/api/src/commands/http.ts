@@ -11,7 +11,7 @@ function decodePart(part:string):string {
 export function commandPath(path:string):string {
   const parts=path.replace(/\/+$/,'').split('/').map(decodePart);
   const domain=parts[2]?.toLowerCase();
-  const parameterPositions:Record<string,number[]>={groups:[3],quiz:[3],trails:[3,5]};
+  const parameterPositions:Record<string,number[]>= {documents:[3],groups:[3],quiz:[3],trails:[3,5]};
   const parameters=parameterPositions[domain||'']||[];
   return parts.map((part,index)=>parameters.includes(index)?part:part.toLowerCase()).join('/');
 }
@@ -24,7 +24,7 @@ function attachResponse(res:Response,receipts:CommandReceipts,tenant:string,oper
 }
 function execute(req:Request,res:Response,next:NextFunction,receipts:CommandReceipts,tenant:string):void {
   const path=commandPath(req.path);
-  const erase=req.method==='DELETE'&&path==='/v1/dreamer/memory';
+  const erase=req.method==='DELETE'&&(path==='/v1/dreamer/memory'||/^\/v1\/documents\/doc_[a-f0-9]{20}$/.test(path));
   const isCommand=req.method==='POST'&&tracked.test(path);
   const key=req.get('Idempotency-Key');
   if((!isCommand&&!erase)||!key){

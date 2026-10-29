@@ -1,13 +1,14 @@
 import {Controller,Get,Post,Req,Param} from '@nestjs/common';
 import type {Request} from 'express';
 import {z} from 'zod';
+import {publicGenerationSchema} from '../orchestration/routing.js';
 import {generationSchema} from '../policy.js';
 import {cognition,brains} from '../context.js';
 
 @Controller('v1')
 export class LearningController {
   @Post('generations') async generate(@Req() req:Request){
-    const input=generationSchema.parse(req.body);
+    const input=publicGenerationSchema.parse(req.body);
     return brains.respond('generate',input);
   }
   @Post('chat') async chat(@Req() req:Request){

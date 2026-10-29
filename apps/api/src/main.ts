@@ -16,9 +16,10 @@ import {LearningController} from './modules/learning.controller.js';
 import {CommunityController} from './modules/community.controller.js';
 import {MemoryController} from './modules/memory.controller.js';
 import {InternalController} from './modules/internal.controller.js';
+import {DocumentsController} from './modules/documents.controller.js';
 import {TrailsController} from './modules/trails.controller.js';
 
-@Module({controllers:[ConnectionsController,LibraryController,LearningController,CommunityController,MemoryController,InternalController,TrailsController]})
+@Module({controllers:[ConnectionsController,LibraryController,LearningController,CommunityController,MemoryController,InternalController,TrailsController,DocumentsController]})
 class AtlasModule {}
 const app=await NestFactory.create<NestExpressApplication>(AtlasModule,{logger:['error','warn']});
 app.useBodyParser('json',{limit:'128kb'});

@@ -13,7 +13,7 @@ export const generationSchema = z.object({
   rag_mode: z.enum(['auto', 'vector', 'hybrid', 'lm']).default('auto'),
 }).strict();
 export type Generation = z.infer<typeof generationSchema>;
-export const decisionSchema = z.object({method:z.enum(['socratic','feynman','first_principles','warburg']),rag_mode:z.enum(['vector','hybrid','lm']),reason:z.string().max(1000),source:z.enum(['policy','typesafe'])});
+export const decisionSchema = z.object({method:z.enum(['socratic','feynman','first_principles','warburg']),rag_mode:z.enum(['vector','hybrid','lm']),reason:z.string().max(1000),source:z.enum(['policy','typesafe']),agent_id:generationSchema.shape.agent_id.optional(),agent_source:z.enum(['manual','policy','typesafe']).optional(),agent_reason:z.string().max(500).optional()});
 
 export function fallbackDecision(input: Generation, characters: number) {
   const method = input.method === 'auto' ? input.agent_id === 'lumi' ? 'warburg' : input.format === 'quiz' ? 'socratic' : input.profile === 'beginner' ? 'feynman' : 'first_principles' : input.method;

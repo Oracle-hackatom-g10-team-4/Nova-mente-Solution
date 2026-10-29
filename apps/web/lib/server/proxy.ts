@@ -3,7 +3,7 @@ import {NextRequest,NextResponse} from 'next/server';
 const MAX_FILE=10*1024*1024;
 const MAX_BODY=MAX_FILE+64*1024;
 export const routes:Record<string,RegExp[]>={
-  GET:[/^connections$/,/^bootstrap$/,/^documents$/,/^documents\/[\w-]+\/source$/,/^packages\/[\w-]+$/,/^trails(?:\/[\w-]+)?$/,/^progress$/,/^groups$/,/^groups\/[\w-]+\/messages$/,/^dreamer\/status$/],
+  GET:[/^connections$/,/^bootstrap$/,/^documents$/,/^documents\/[\w-]+\/(source|deletion|removal)$/,/^packages\/[\w-]+$/,/^trails(?:\/[\w-]+)?$/,/^progress$/,/^groups$/,/^groups\/[\w-]+\/messages$/,/^dreamer\/status$/],
   POST:[/^connections\/(generation|embeddings)\/test$/,/^connections\/(generation|embeddings|decision|search)$/,/^documents$/,/^generations$/,/^chat$/,/^quiz\/[\w-]+\/attempt$/,/^trails(?:\/[\w-]+\/steps\/[\w-]+\/(generate|complete))?$/,/^groups$/,/^groups\/[\w-]+\/messages$/,/^dreamer\/(consent|cycles|rollback)$/],
   DELETE:[/^connections\/(generation|embeddings|decision|search)$/,/^documents\/[\w-]+$/,/^dreamer\/memory$/],
 };
