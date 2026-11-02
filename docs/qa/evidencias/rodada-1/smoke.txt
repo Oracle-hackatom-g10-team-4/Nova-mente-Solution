@@ -1,0 +1,5 @@
+
+> novamente-atlas@0.1.0 smoke
+> node scripts/smoke.mjs
+
+Smoke HTTP passou: upload, geração, citação, quiz/XP idempotente, Dreamer, grupo e chat. Modo: extractive_demo

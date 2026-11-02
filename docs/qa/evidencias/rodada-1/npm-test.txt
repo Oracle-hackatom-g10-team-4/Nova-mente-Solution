@@ -1,0 +1,157 @@
+
+> novamente-atlas@0.1.0 test
+> npm run test -w @atlas/api && .venv/bin/python -m unittest discover -s services/cognition/tests -v && node --test scripts/env-loader.test.mjs scripts/check-env.test.mjs
+
+
+> @atlas/api@0.1.0 test
+> tsx --test test/*.test.ts
+
+✔ durable replay keeps the exact response after reopening and accepts canonical JSON (49.262315ms)
+✔ competing processes/connections cannot reserve an in-flight key twice (38.72733ms)
+✔ scope is tenant and operation, never a global untrusted key (47.809598ms)
+✔ forget invalidates done and in-flight content without making keys reusable (39.73427ms)
+✔ failed, oversized and expired responses never reexecute; quota fails closed (53.904474ms)
+✔ invalid operation keys and invalid numeric settings are rejected (24.961795ms)
+✔ expiry is persisted even when replay or quota returns an error (34.979484ms)
+✔ static routing aliases normalize while resource ID case stays significant (1.124183ms)
+✔ erasure receipt can replay but previous memory receipts cannot (45.542006ms)
+✔ aggregate byte quota counts UTF-8 and erasure releases cached content safely (45.056745ms)
+▶ provider vault: encrypted roundtrip, cross-runtime read, isolation, probes and deletion
+  ✔ never persists or returns plaintext; Python decrypts the same envelope (465.47645ms)
+  ✔ tenant change and ciphertext tampering fail closed (5.485608ms)
+  ✔ missing master key never silently falls back to another provider (1.103752ms)
+  ✔ rejects arbitrary endpoints, cross-purpose providers and unapproved ChatGPT login (2.851837ms)
+  ✔ a catalog probe sends the secret only to its provider and never generates content (428.388535ms)
+  ✔ mounted secret file has explicit priority and missing files fail closed (267.196986ms)
+  ✔ deleting a manual key restores server configuration without returning it (2.878764ms)
+✔ provider vault: encrypted roundtrip, cross-runtime read, isolation, probes and deletion (1264.377145ms)
+✔ document HTTP adapter preserves pending 202 and completed 200 (1995.331148ms)
+✔ signed agent tickets reject tampering, expiry and weak signing keys (11.780702ms)
+✔ all personas are executed by the same typed Eve factory (46.658623ms)
+✔ Dreamer and replay use distinct strict output contracts (32.500421ms)
+✔ invalid model output fails closed and releases the factory slot (66.095999ms)
+✔ one active runtime rejects concurrent work with backpressure (10.799468ms)
+✔ Eve tools use an Invokta brain principal, one search and no administrative grant (19.642031ms)
+✔ Dreamer policy sessions cannot search even with a valid signed ticket (10.248843ms)
+✔ teams exchange proposals, cross-revise and synthesize through real runtime turns (18.901406ms)
+✔ approved exploration policy skips a redundant revision round (19.177979ms)
+✔ debate cannot publish fabricated citations or an unsupported winner (22.365828ms)
+✔ global cancellation also bounds a decision provider that ignores AbortSignal (25.639625ms)
+✔ Action Engines expose versioned domain capabilities and schemas (29.590265ms)
+✔ Invokta denies cross-workspace calls and brains cannot grant consent or erase memory (18.58211ms)
+✔ Invokta rejects injected fields and invalid provider outputs before returning them (19.433944ms)
+✔ all five brains use authorized source sizes and Dreamer policy for chat and generation (52.826976ms)
+✔ brains reject unauthorized documents before reading memory or executing a model (9.900842ms)
+✔ a revoked consent prevents the brain from forwarding a stale policy (18.130309ms)
+✔ external memory failure still clears local history through the memory engine (14.969675ms)
+✔ action cancellation reaches provider port (15.472492ms)
+TypeSafe indisponível em judge; seguindo sem avaliação
+TypeSafe indisponível em selectTeam; seguindo sem escolha
+TypeSafe indisponível em evaluateEvidence; seguindo sem avaliação
+✔ Taylam integration: a failed decision provider never invents judgment, winner or relevance (10.324569ms)
+✔ Taylam upload correction preserves Unicode and decodes latin1 multipart mojibake (0.772906ms)
+TypeSafe indisponível em judge; seguindo sem avaliação
+TypeSafe indisponível em selectTeam; seguindo sem escolha
+TypeSafe indisponível em evaluateEvidence; seguindo sem avaliação
+✔ automatic choices preserve user overrides and keep large sources out of LM context (7.324151ms)
+✔ client cannot inject tenant, decision or credential fields into generation (1.082315ms)
+✔ approved Dreamer preference influences auto mode without overriding the user (3.112331ms)
+✔ sem chave do TypeSafe: judge, selectTeam e evaluateEvidence não avaliam (4.690446ms)
+✔ TypeSafe fora do ar: falha do SDK não derruba o fluxo (8.949005ms)
+✔ automatic routing has an explicit local fallback, and manual overrides bypass the judge (5.248918ms)
+✔ Jev selects only a bounded native agent and gets a short deadline with no retries (5.136531ms)
+✔ provider failure and an invalid suggested ID cannot grant a capability or pretend remote success (3.379311ms)
+✔ automatic routing validates sources before consulting memory or the decision model (36.25907ms)
+✔ the resolved agent is the actual principal sent to Invokta and is persisted in the decision (19.633069ms)
+ℹ tests 50
+ℹ suites 0
+ℹ pass 50
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11737.449566
+test_educational_metadata_is_grounded_and_estimation_is_labeled (test_credentials.CredentialTests.test_educational_metadata_is_grounded_and_estimation_is_labeled) ... ok
+test_profile_is_used_by_actual_generation_adapter_without_exporting_key (test_credentials.CredentialTests.test_profile_is_used_by_actual_generation_adapter_without_exporting_key) ... ok
+test_secret_file_priority_and_default_without_embedding_provider (test_credentials.CredentialTests.test_secret_file_priority_and_default_without_embedding_provider) ... ok
+test_snapshot_prevents_mixed_embedding_models_during_rotation (test_credentials.CredentialTests.test_snapshot_prevents_mixed_embedding_models_during_rotation) ... ok
+test_wrong_tenant_and_missing_master_never_fallback_to_environment (test_credentials.CredentialTests.test_wrong_tenant_and_missing_master_never_fallback_to_environment) ... ok
+test_bounded_cleanup_resumes_after_reopening_without_repeating_logical_erasure (test_document_lifecycle.DocumentLifecycle.test_bounded_cleanup_resumes_after_reopening_without_repeating_logical_erasure) ... ok
+test_changed_index_destination_and_missing_receipt_identity_need_attention (test_document_lifecycle.DocumentLifecycle.test_changed_index_destination_and_missing_receipt_identity_need_attention) ... ok
+test_changed_oci_configuration_never_deletes_a_different_original_bucket (test_document_lifecycle.DocumentLifecycle.test_changed_oci_configuration_never_deletes_a_different_original_bucket) ... ok
+test_cleanup_rejects_objects_outside_tenant_or_allowed_paths (test_document_lifecycle.DocumentLifecycle.test_cleanup_rejects_objects_outside_tenant_or_allowed_paths) ... ok
+test_delayed_dreamer_record_cannot_restore_erased_history (test_document_lifecycle.DocumentLifecycle.test_delayed_dreamer_record_cannot_restore_erased_history) ... ok
+test_delete_cascades_only_dependent_materials_and_refreshes_xp (test_document_lifecycle.DocumentLifecycle.test_delete_cascades_only_dependent_materials_and_refreshes_xp) ... ok
+test_deleted_demo_does_not_reappear_after_service_restart (test_document_lifecycle.DocumentLifecycle.test_deleted_demo_does_not_reappear_after_service_restart) ... ok
+test_external_failure_hides_source_but_never_claims_completed_cleanup (test_document_lifecycle.DocumentLifecycle.test_external_failure_hides_source_but_never_claims_completed_cleanup) ... ok
+test_external_memory_cleanup_has_a_stable_operation_and_requires_acknowledgement (test_document_lifecycle.DocumentLifecycle.test_external_memory_cleanup_has_a_stable_operation_and_requires_acknowledgement) ... ok
+test_external_memory_reset_is_idempotent_and_keeps_consent (test_document_lifecycle.DocumentLifecycle.test_external_memory_reset_is_idempotent_and_keeps_consent) ... ok
+test_failed_old_jobs_do_not_starve_a_new_removal (test_document_lifecycle.DocumentLifecycle.test_failed_old_jobs_do_not_starve_a_new_removal) ... ok
+test_inflight_generation_cannot_write_after_successful_removal (test_document_lifecycle.DocumentLifecycle.test_inflight_generation_cannot_write_after_successful_removal) ... ok
+test_inflight_trail_creation_cannot_leave_orphaned_references (test_document_lifecycle.DocumentLifecycle.test_inflight_trail_creation_cannot_leave_orphaned_references) ... ok
+test_legacy_without_current_config_requires_operator_reconciliation_and_real_cleanup (test_document_lifecycle.DocumentLifecycle.test_legacy_without_current_config_requires_operator_reconciliation_and_real_cleanup) ... ok
+test_memory_destination_is_recorded_before_send_and_survives_disabling_configuration (test_document_lifecycle.DocumentLifecycle.test_memory_destination_is_recorded_before_send_and_survives_disabling_configuration) ... ok
+test_multiple_historical_qdrant_destinations_are_cleaned_progressively (test_document_lifecycle.DocumentLifecycle.test_multiple_historical_qdrant_destinations_are_cleaned_progressively) ... ok
+test_oci_cleanup_requires_verified_absence_and_is_safe_to_repeat (test_document_lifecycle.DocumentLifecycle.test_oci_cleanup_requires_verified_absence_and_is_safe_to_repeat) ... ok
+test_qdrant_and_mongo_delete_use_tenant_and_document_filters (test_document_lifecycle.DocumentLifecycle.test_qdrant_and_mongo_delete_use_tenant_and_document_filters) ... ok
+test_reindex_remembers_prior_and_interrupted_destinations (test_document_lifecycle.DocumentLifecycle.test_reindex_remembers_prior_and_interrupted_destinations) ... ok
+test_retry_survives_restart_and_upload_is_reprocessed_with_new_id (test_document_lifecycle.DocumentLifecycle.test_retry_survives_restart_and_upload_is_reprocessed_with_new_id) ... ok
+test_tenant_and_transaction_failure_preserve_other_data (test_document_lifecycle.DocumentLifecycle.test_tenant_and_transaction_failure_preserve_other_data) ... ok
+test_failed_qdrant_reindex_preserves_canonical_snapshot (test_optional_services.OptionalServiceTests.test_failed_qdrant_reindex_preserves_canonical_snapshot) ... ok
+test_mongo_queries_are_tenant_scoped_projected_paginated_and_indexed (test_optional_services.OptionalServiceTests.test_mongo_queries_are_tenant_scoped_projected_paginated_and_indexed) ... ok
+test_qdrant_error_has_no_lexical_fallback (test_optional_services.OptionalServiceTests.test_qdrant_error_has_no_lexical_fallback) ... ok
+test_qdrant_rejects_out_of_scope_result_and_unsafe_remote_url (test_optional_services.OptionalServiceTests.test_qdrant_rejects_out_of_scope_result_and_unsafe_remote_url) ... ok
+test_qdrant_writes_only_reference_payloads_and_filters_every_query (test_optional_services.OptionalServiceTests.test_qdrant_writes_only_reference_payloads_and_filters_every_query) ... ok
+test_all_formats_keep_canonical_page_and_explicit_local_mode (test_pipeline.PipelineTests.test_all_formats_keep_canonical_page_and_explicit_local_mode) ... ok
+test_competing_cycle_reaches_terminal_state (test_pipeline.PipelineTests.test_competing_cycle_reaches_terminal_state) ... ok
+test_debate_details_stay_private_and_are_erased_with_memory (test_pipeline.PipelineTests.test_debate_details_stay_private_and_are_erased_with_memory) ... ok
+test_dreamer_promotes_only_evaluated_improvement_and_can_rollback (test_pipeline.PipelineTests.test_dreamer_promotes_only_evaluated_improvement_and_can_rollback) ... ok
+test_dreamer_requires_consent_and_real_evaluation_before_promotion (test_pipeline.PipelineTests.test_dreamer_requires_consent_and_real_evaluation_before_promotion) ... ok
+test_forgetting_during_dream_does_not_recreate_deleted_memory (test_pipeline.PipelineTests.test_forgetting_during_dream_does_not_recreate_deleted_memory) ... ok
+test_judge_never_claims_it_evaluated_a_truncated_answer (test_pipeline.PipelineTests.test_judge_never_claims_it_evaluated_a_truncated_answer) ... ok
+test_lm_does_not_silently_truncate_whole_document (test_pipeline.PipelineTests.test_lm_does_not_silently_truncate_whole_document) ... ok
+test_material_created_before_consent_is_not_a_replay_case (test_pipeline.PipelineTests.test_material_created_before_consent_is_not_a_replay_case) ... ok
+test_quiz_has_server_side_answers_and_idempotent_xp_even_with_different_event (test_pipeline.PipelineTests.test_quiz_has_server_side_answers_and_idempotent_xp_even_with_different_event) ... ok
+test_reindex_preserves_sources_and_is_atomic_on_provider_failure (test_pipeline.PipelineTests.test_reindex_preserves_sources_and_is_atomic_on_provider_failure) ... ok
+test_rejects_invalid_binary_empty_and_oversize_uploads (test_pipeline.PipelineTests.test_rejects_invalid_binary_empty_and_oversize_uploads) ... ok
+test_stale_experiences_cannot_return_after_erase_and_new_consent (test_pipeline.PipelineTests.test_stale_experiences_cannot_return_after_erase_and_new_consent) ... ok
+test_unrelated_question_abstains_instead_of_inventing_evidence (test_pipeline.PipelineTests.test_unrelated_question_abstains_instead_of_inventing_evidence) ... ok
+test_upload_deduplicates_only_inside_owner_and_cannot_read_other_sources (test_pipeline.PipelineTests.test_upload_deduplicates_only_inside_owner_and_cannot_read_other_sources) ... ok
+test_efficiency_cannot_hide_a_quality_regression (test_replay_jobs.ReplayAndJobsTests.test_efficiency_cannot_hide_a_quality_regression) ... ok
+test_eve_is_primary_and_direct_mode_requires_explicit_selection (test_replay_jobs.ReplayAndJobsTests.test_eve_is_primary_and_direct_mode_requires_explicit_selection) ... ok
+test_expired_workers_cannot_overwrite_newer_attempt (test_replay_jobs.ReplayAndJobsTests.test_expired_workers_cannot_overwrite_newer_attempt) ... ok
+test_factory_provider_preserves_persona_purpose_and_returns_only_typed_data (test_replay_jobs.ReplayAndJobsTests.test_factory_provider_preserves_persona_purpose_and_returns_only_typed_data) ... ok
+test_job_deduplication_lease_recovery_and_terminal_status (test_replay_jobs.ReplayAndJobsTests.test_job_deduplication_lease_recovery_and_terminal_status) ... ok
+test_relevance_evaluation_rejects_foreign_ids (test_replay_jobs.ReplayAndJobsTests.test_relevance_evaluation_rejects_foreign_ids) ... ok
+test_replay_reads_recorded_outcomes_without_agent_or_judge_execution (test_replay_jobs.ReplayAndJobsTests.test_replay_reads_recorded_outcomes_without_agent_or_judge_execution) ... ok
+test_revocation_and_forget_invalidate_old_jobs_and_writers (test_replay_jobs.ReplayAndJobsTests.test_revocation_and_forget_invalidate_old_jobs_and_writers) ... ok
+test_runtime_backpressure_keeps_http_429 (test_replay_jobs.ReplayAndJobsTests.test_runtime_backpressure_keeps_http_429) ... ok
+test_trigger_sends_ids_not_documents_and_reuses_job_id (test_replay_jobs.ReplayAndJobsTests.test_trigger_sends_ids_not_documents_and_reuses_job_id) ... ok
+test_unrecorded_branch_is_uncovered_and_not_invented (test_replay_jobs.ReplayAndJobsTests.test_unrecorded_branch_is_uncovered_and_not_invented) ... ok
+test_wrong_tenant_cannot_claim_a_job (test_replay_jobs.ReplayAndJobsTests.test_wrong_tenant_cannot_claim_a_job) ... ok
+test_concurrent_correct_answers_reward_once (test_trails.TrailTests.test_concurrent_correct_answers_reward_once) ... ok
+test_dedup_still_validates_file_signature_and_accepts_markdown_alias (test_trails.TrailTests.test_dedup_still_validates_file_signature_and_accepts_markdown_alias) ... ok
+test_duplicate_upload_skips_parser_and_section_rag_does_not_load_full_sources (test_trails.TrailTests.test_duplicate_upload_skips_parser_and_section_rag_does_not_load_full_sources) ... ok
+test_level_boundaries_are_server_calculated (test_trails.TrailTests.test_level_boundaries_are_server_calculated) ... ok
+test_progression_requires_material_prerequisites_and_verified_quiz (test_trails.TrailTests.test_progression_requires_material_prerequisites_and_verified_quiz) ... ok
+test_same_quiz_event_replays_and_changed_payload_conflicts (test_trails.TrailTests.test_same_quiz_event_replays_and_changed_payload_conflicts) ... ok
+test_tenant_sources_and_material_contracts_cannot_be_forged (test_trails.TrailTests.test_tenant_sources_and_material_contracts_cannot_be_forged) ... ok
+test_trail_survives_restart_and_reads_never_advance_it (test_trails.TrailTests.test_trail_survives_restart_and_reads_never_advance_it) ... ok
+
+----------------------------------------------------------------------
+Ran 66 tests in 11.096s
+
+OK
+✔ environment contract works with Node alone and preserves nested source coverage (74.103183ms)
+✔ missing variables in nested modules and direct config files still fail the gate without rg (73.474591ms)
+✔ default environment file fills missing values without replacing injected ones (157.132006ms)
+✔ custom relative and absolute paths reach every child with one canonical selection (275.705936ms)
+✔ an explicitly missing environment file cannot fall back or execute the child (75.970747ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 897.243857

@@ -1,0 +1,12 @@
+
+> novamente-atlas@0.1.0 typecheck
+> npm run typecheck --workspaces --if-present
+
+
+> @atlas/api@0.1.0 typecheck
+> tsc --noEmit && tsc --noEmit -p tsconfig.agent.json
+
+
+> @atlas/web@0.1.0 typecheck
+> tsc --noEmit
+
