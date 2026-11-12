@@ -72,6 +72,8 @@ O Atlas parte do material de quem estuda. Você adiciona uma fonte, escolhe um o
 
 O SVG apresenta o que acontece com seu material: encontrar trechos úteis, organizar a ajuda dos tutores e estudar com referências. A animação respeita a preferência por movimento reduzido. É uma ilustração do funcionamento; os recursos de IA dependem de configuração. [Diagramas técnicos em Mermaid](#arquitetura-em-linguagem-simples).
 
+**Teste com APIs reais (12/11/2026):** geração, avaliação de fontes, pesquisa e colaboração entre tutores foram exercitadas localmente com material sintético. Veja [resultados, correção do orçamento e limites observados](docs/reviews/2026-11-12-validacao-real-modelos.md). Cada instalação ainda precisa configurar e validar seus provedores.
+
 ## O Atlas em ação
 
 <p align="center">
