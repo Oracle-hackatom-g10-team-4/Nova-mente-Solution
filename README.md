@@ -855,7 +855,7 @@ O cadastro não concede privilégios pelo endereço de e-mail. No servidor confi
 
 ## Equipe, contribuição e licença
 
-O Atlas reúne **André** no full stack e arquitetura, **Jadeilton** em cloud, **Taylam** no backend, **Samuel** em testes e **Ebenezer** no frontend. A página [Contributors](CONTRIBUTORS.md) registra os perfis, os papéis e os demais colaboradores presentes nos repositórios.
+O Atlas reúne **André** no full stack e arquitetura, **Jadeilton** em cloud com Oracle, **Taylam** no backend, **Samuel** em testes e **Ebenezer** no frontend. A página [Contributors](CONTRIBUTORS.md) registra os perfis, os papéis e os demais colaboradores presentes nos repositórios.
 
 Quer participar? Consulte [CONTRIBUTING.md](CONTRIBUTING.md) para preparar o ambiente, escolher a área, validar sua mudança e abrir um PR com commits pequenos e justificados.
 
