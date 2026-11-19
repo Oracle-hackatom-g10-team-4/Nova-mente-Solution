@@ -163,3 +163,32 @@ ATLAS_ACCEPTANCE_DOCUMENT_ID=ID_REAL_DA_FONTE node scripts/acceptance.mjs
 O script recusa demonstração extrativa, falta de prova vetorial e recibos locais. Executa três cenários sobre a mesma fonte, exige suporte Jev e grava o relatório em `data/reports/mvp-acceptance.json`, ignorado pelo Git. Ele usa provedores reais e pode consumir créditos; ajuste as quotas antes de executar.
 
 Esse relatório não substitui revisão humana, vídeo de demonstração, benchmark, autenticação pública ou avaliação de eficácia. Veja `docs/AUDITORIA_MVP_POS_MVP.md` para a matriz completa e as pendências do pós-MVP.
+
+
+## Rede com proxy e orçamento de geração
+
+Em ambientes que fornecem `HTTP_PROXY`/`HTTPS_PROXY`, os processos Node 24 precisam de `NODE_USE_ENV_PROXY=1` desde a inicialização. O loader do projeto propaga essa variável aos filhos. Preserve `NO_PROXY` para os serviços locais e a CA confiável fornecida pelo ambiente; não desabilite TLS. O Python/httpx já respeita as variáveis de proxy. Uma chave configurada não comprova que o SDK consegue acessar o fornecedor.
+
+O perfil direto compatível com a NVIDIA foi validado com fonte sintética:
+
+```dotenv
+ATLAS_AGENT_RUNTIME=direct
+LLM_BASE_URL=https://integrate.api.nvidia.com/v1
+LLM_MODEL=minimaxai/minimax-m3.1-flash
+```
+
+A chave correspondente é `LLM_API_KEY`, injetada pelo gerenciador de segredos, ou seu arquivo `_FILE`. Não envie essa chave ao OpenRouter. Para o perfil de agentes, um exemplo validado separadamente é:
+
+```dotenv
+ATLAS_AGENT_RUNTIME=eve
+EVE_MODEL_PROVIDER=openrouter
+EVE_MODEL=openai/gpt-4.1-mini
+EVE_MODEL_CONTEXT_WINDOW=32768
+EVE_URL=http://127.0.0.1:2000
+```
+
+Esse perfil usa `OPENROUTER_API_KEY` e requer o runtime Eve ativo. Os endereços do exemplo são locais; em containers, use os nomes de serviço do Compose. A execução de três a cinco turnos pode consumir mais tokens que a geração direta. Modelos gratuitos também podem responder HTTP 429 por indisponibilidade ou limites do fornecedor.
+
+Para OpenRouter e OpenAI-compatible no Eve, o Atlas limita cada pedido a **4000 tokens de saída**, preservando um teto menor já solicitado. Os campos específicos de fornecedor também não podem ampliar esse teto. Isso impede reservas de 32768/65536 tokens por padrão. Os limites acumulados de sessão, tempo e custo permanecem ativos. O perfil Anthropic e o AI Gateway conservam seus contratos anteriores; o novo limitador não é uma promessa sobre o orçamento de raciocínio desses fornecedores.
+
+Veja o [relatório dos testes reais](reviews/2026-11-12-validacao-real-modelos.md) para os perfis exercitados, medidas e limitações. Teste local com fonte sintética não comprova deploy Oracle, OCI Object Storage, carga de 4 GB ou eficácia pedagógica em usuários reais.

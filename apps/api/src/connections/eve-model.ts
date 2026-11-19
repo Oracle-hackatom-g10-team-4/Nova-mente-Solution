@@ -4,6 +4,7 @@ import { chatgpt } from "eve/models/openai";
 import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
 import { createAnthropic } from "@ai-sdk/anthropic";
 import { connection } from "./vault.js";
+import { withOutputBudget } from "./output-budget.js";
 
 /** Keys are resolved in the trusted runtime, never in a prompt or durable state. */
 export const atlasModel = defineDynamic({
@@ -40,12 +41,12 @@ export const atlasModel = defineDynamic({
       const model =
         profile.provider === "anthropic"
           ? createAnthropic({ apiKey: profile.key })(profile.model)
-          : createOpenAICompatible({
+          : withOutputBudget(createOpenAICompatible({
               name: profile.provider,
               baseURL: profile.base_url,
               apiKey: profile.key,
               includeUsage: true,
-            })(profile.model);
+            })(profile.model));
       return { model, modelContextWindowTokens: profile.context_window };
     },
   },
