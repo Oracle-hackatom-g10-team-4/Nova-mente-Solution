@@ -1,14 +1,19 @@
-# Atlas — vídeo do Demo Day
+# Atlas — materiais do Demo Day
 
-Arquivos da demonstração, em uma branch dedicada de mídia.
+## Edição dinâmica — recomendada
 
-- **Atlas-Demo-Day-sem-audio.mp4**: 4min45s, H.264, 1600×900, sem áudio.
-- **Atlas-Roteiro-de-Narracao.pdf**: roteiro com marcações de tempo.
-- **ROTEIRO-NARRACAO.md**: roteiro em texto.
-- **ENTREGA-VERIFICADA.json**: duração, tamanho e SHA-256 do vídeo.
+- **Atlas-Demo-Day-Dinamico.mp4**: 4min45s, Full HD (1920×1080), H.264 e sem áudio.
+- Ponteiro visível, destaques nos cliques, aproximações, sete personas e leitura do PDF com evidências.
+- Cartão da equipe e roteiro com colaboração, aprendizado técnico, avanços e impacto pretendido.
+- **Atlas-Roteiro-Dinamico.pdf** e **ROTEIRO-DINAMICO.md**: narração sincronizada às 14 cenas.
+- **ENTREGA-DINAMICA-VERIFICADA.json**: duração, tamanho e SHA-256 do MP4.
 
-Abra o MP4 e use **Download raw file** para baixar; no celular, o navegador também pode oferecer **Baixar vídeo**.
+Abra o vídeo e use **Download raw file**; no celular, o navegador também pode oferecer **Baixar vídeo**.
 
-A gravação começa na landing do GitHub e continua na aplicação executada localmente. Usa fonte didática sintética e geração remota real. As esperas da IA foram encurtadas na edição; não é uma medição de latência. O acerto do quiz foi preparado para mostrar feedback e XP. A demonstração não comprova deploy público ou eficácia pedagógica medida.
+A gravação começa na landing do GitHub e continua na aplicação local com fonte didática sintética e geração remota real. As esperas da IA foram encurtadas. A seleção no PDF é temporária, sem anotação salva. O acerto do quiz foi preparado para demonstrar feedback e XP. Cliques, molduras, câmera e cartões são efeitos editoriais. O vídeo não comprova deploy público ou eficácia pedagógica medida.
 
-Esta branch contém somente os materiais de apresentação e não se destina a merge na aplicação.
+## Edição anterior
+
+Atlas-Demo-Day-sem-audio.mp4 e Atlas-Roteiro-de-Narracao.pdf permanecem disponíveis para referência.
+
+Esta branch contém somente materiais de apresentação e não se destina a merge na aplicação.
