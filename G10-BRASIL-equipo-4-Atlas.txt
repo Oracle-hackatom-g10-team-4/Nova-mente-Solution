@@ -1,0 +1,75 @@
+NOVAMENTE ATLAS
+Uma biblioteca que pensa com você
+
+Programa ONE (Oracle Next Education e Alura) · No Country
+G10 Brasil · Equipe 4 · Demo Day · 19/11/2026
+
+1. O PROBLEMA E A SOLUÇÃO
+
+Uma apostila, um artigo ou um manual pode conter tudo o que alguém precisa aprender. O trabalho está em descobrir por onde começar, conferir o que entendeu e praticar até conseguir usar aquele conhecimento.
+
+O NovaMente Atlas reúne essas etapas em um estúdio de estudo. A pessoa adiciona suas fontes, diz o que quer compreender e recebe um material no nível e no formato que fazem sentido para aquele objetivo. A citação leva à passagem que sustenta a explicação. A partir daí, a pessoa pode voltar a ler, tirar dúvidas ou praticar.
+
+A demonstração usa um PDF sobre redes na Oracle Cloud para responder ao desafio do programa ONE. A mesma experiência pode servir a outras áreas, como biologia, história e formação profissional, desde que as fontes cubram o assunto.
+
+2. COMO FUNCIONA
+
+1) Adicione um PDF com texto selecionável, Markdown ou TXT e escolha as fontes da sessão.
+2) Diga o que quer aprender. O Atlas pode sugerir tutor e método. Perfil, formato e contexto de aplicação são ajustáveis.
+3) Gere um tutorial, flashcards, um quiz ou um resumo executivo. O material fica disponível na interface e em JSON estruturado.
+4) Abra uma citação para ver a passagem realçada no leitor. Também é possível selecionar texto durante a leitura. Na aba Proveniência, consulte como o sistema recuperou e avaliou a evidência.
+5) Pratique e acompanhe o resultado. O servidor corrige a atividade e registra o XP sem somar de novo o mesmo acerto. As trilhas dividem o estudo em etapas. Gerenciar fontes permite conferir os efeitos de uma remoção antes de confirmá-la.
+
+O limite configurado para upload é de 80 MiB por arquivo. PDFs podem ter até 1.000 páginas. Há teto de 2 milhões de caracteres extraídos, além do limite de passagens. Use PDF pesquisável e desbloqueado. Para scans sem texto, envie uma transcrição.
+
+3. TUTORES, RAG E PESQUISA
+
+Sete perspectivas ajudam a pessoa a estudar. Há tutores que explicam em linguagem simples, fazem perguntas que levam ao raciocínio, ligam ideias entre fontes, revisam a qualidade da evidência, organizam o conteúdo, criam prática e acompanham a continuidade do estudo. A pessoa pode ajustar a aparência de um Atlas e escolher uma persona do catálogo.
+
+Em modo Eve, a fábrica de agentes prepara sessões separadas, com instruções, contexto e ferramentas da persona. As Action Engines validam operações de estudo, pesquisa e memória. Com as integrações ativas, duas sessões podem explorar abordagens distintas, o Jev pode comparar a qualidade, e uma terceira sessão pode sintetizar a proposta escolhida. A discussão ocorre no backend.
+
+O RAG recupera trechos das fontes para orientar a geração. Na ingestão, o Atlas extrai texto por página e mantém referências às passagens. A recuperação habitual combina busca textual e seleção de seções. O LM RAG pode levar o documento integral ao modelo quando ele cabe no orçamento de contexto. A busca vetorial com embeddings semânticos é um caminho configurável previsto para o critério do edital. O Jev auxilia na seleção da estratégia, do tutor e do método, e na avaliação do respaldo. Quando habilitado, o Atlas também pesquisa na web via Firecrawl.
+
+A interface Next.js conversa com a API NestJS, que aplica as regras e integra as ferramentas. O serviço Python processa documentos e organiza o material. As chaves ficam no servidor. Com consentimento, o Dreamer pode registrar experiências e propor melhorias pedagógicas, avaliadas contra a política atual antes de uma promoção. A política é versionada e pode ser revertida.
+
+4. DEMONSTRAÇÃO E RESULTADOS
+
+No vídeo narrado, a pessoa sai da landing, adiciona a fonte sobre Oracle Cloud, pede uma explicação, segue a citação até o documento, abre a proveniência e responde ao quiz. A gravação usa geração real com OpenRouter e avaliação com Jev. O modo Eve e a busca web tiveram validações separadas. O vídeo tem 4min16s.
+
+Para repetir a demonstração com o mesmo documento, experimente três cenários:
+- Iniciante · Tutorial de VCN e NAT Gateway, com conferência da citação.
+- Desenvolvedor · Flashcards sobre sub-rede privada, com conferência de uma passagem.
+- Iniciante · Quiz sobre VCN e NAT Gateway, com feedback e evolução do XP.
+
+Uma rodada local verificou os quatro formatos com geração real e fonte sintética, conferência de citações, abstenção sem evidência e progresso idempotente. O relatório da equipe também registra geração para perfis distintos e uma demonstração OCI separada, com o documento original e o JSON enviados ao Object Storage e conferidos por leitura de retorno e SHA-256.
+
+A busca semântica com embeddings exige uma execução própria para comprovar o requisito do edital. O relatório registra um travamento de interface em um teste de upload de 9 MiB, que precisa ser revalidado. O vídeo principal foi gravado localmente. A implantação pública, os custos e a carga na VM ainda exigem verificação no ambiente Oracle.
+
+5. EQUIPE E IMPACTO
+
+André Victor Andrade Oliveira Santos · Full stack e arquitetura.
+Jadeilton Almeida · Cloud e infraestrutura Oracle.
+Taylam Moura · Backend.
+Samuel Souza Ferreira · Testes e validação.
+Ebenezer C. Vilola Cangondo · Frontend.
+
+Trabalhamos juntos para ligar o leitor e a prática às regras de negócio, à geração com evidências e ao armazenamento. O avanço técnico foi passar de uma proposta de adaptação de conteúdo a um fluxo que permite conferir a resposta na origem e registrar a prática. O impacto buscado é ampliar a autonomia no estudo. A eficácia pedagógica ainda está por medir com usuários.
+
+6. EXECUÇÃO E LINKS
+
+Na raiz do código, bash scripts/setup.sh prepara o ambiente e npm run dev inicia os serviços. Abra http://127.0.0.1:3000. Em outro terminal, npm run smoke verifica a execução local. Use .env.example e o guia do repositório para configurar provedores reais. Sem um provedor de geração configurado, a demonstração extrativa é identificada na interface.
+
+Código da equipe No Country
+https://github.com/No-Country-simulation/nuevamente-g10-latam-Equipo-4
+
+Código da equipe Oracle
+https://github.com/Oracle-hackatom-g10-team-4/Nova-mente-Solution
+
+Vídeo narrado com câmera
+https://raw.githubusercontent.com/Oracle-hackatom-g10-team-4/Nova-mente-Solution/9b0c9c2f400ed3075b2beedb36d50459a2bc19d5/Atlas-Demo-Day-Com-Camera-60fps.mp4
+
+Relatório de QA
+https://github.com/Oracle-hackatom-g10-team-4/Nova-mente-Solution/blob/657ac0a/docs/qa/RELATORIO_EXECUCAO_TESTES.md
+
+Guia de configuração
+https://github.com/Oracle-hackatom-g10-team-4/Nova-mente-Solution/blob/657ac0a/docs/CONFIGURACAO_E_DEPLOY.md
