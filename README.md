@@ -1,19 +1,19 @@
 # Atlas — materiais do Demo Day
 
-## Edição dinâmica — recomendada
+## Edição fluida em 60 fps — recomendada
 
-- **Atlas-Demo-Day-Dinamico.mp4**: 4min45s, Full HD (1920×1080), H.264 e sem áudio.
-- Ponteiro visível, destaques nos cliques, aproximações, sete personas e leitura do PDF com evidências.
-- Cartão da equipe e roteiro com colaboração, aprendizado técnico, avanços e impacto pretendido.
-- **Atlas-Roteiro-Dinamico.pdf** e **ROTEIRO-DINAMICO.md**: narração sincronizada às 14 cenas.
-- **ENTREGA-DINAMICA-VERIFICADA.json**: duração, tamanho e SHA-256 do MP4.
+- **Atlas-Demo-Day-Fluido-60fps.mp4**: 4min45s, Full HD, 60 fps, sem áudio.
+- Fonte capturada em 25 fps, convertida com interpolação linear; câmera recalculada em 60 fps e dissoluções entre cenas. Não é captura nativa em 60 fps.
+- Mantém destaques nos cliques, personas, seleção temporária no leitor PDF, cartão da equipe e marcações da narração.
+- **Atlas-Roteiro-60fps.pdf** e **ROTEIRO-60FPS.md**: roteiro sincronizado.
+- **ENTREGA-60FPS-VERIFICADA.json**: 17.100 quadros decodificados, PTS regulares, tamanho e SHA-256.
 
-Abra o vídeo e use **Download raw file**; no celular, o navegador também pode oferecer **Baixar vídeo**.
+Use **Download raw file** no GitHub ou **Baixar vídeo** no player do navegador.
 
-A gravação começa na landing do GitHub e continua na aplicação local com fonte didática sintética e geração remota real. As esperas da IA foram encurtadas. A seleção no PDF é temporária, sem anotação salva. O acerto do quiz foi preparado para demonstrar feedback e XP. Cliques, molduras, câmera e cartões são efeitos editoriais. O vídeo não comprova deploy público ou eficácia pedagógica medida.
+A gravação usa a landing do GitHub, aplicação local e fonte didática sintética. As esperas da IA foram encurtadas. A seleção no PDF é temporária, sem anotação salva. O acerto do quiz foi preparado para mostrar feedback e XP. Ponteiro, molduras, câmera e cartões são efeitos editoriais. Não comprova deploy público ou eficácia pedagógica medida.
 
-## Edição anterior
+## Edições anteriores
 
-Atlas-Demo-Day-sem-audio.mp4 e Atlas-Roteiro-de-Narracao.pdf permanecem disponíveis para referência.
+Atlas-Demo-Day-Dinamico.mp4, Atlas-Roteiro-Dinamico.pdf, Atlas-Demo-Day-sem-audio.mp4 e Atlas-Roteiro-de-Narracao.pdf permanecem disponíveis.
 
 Esta branch contém somente materiais de apresentação e não se destina a merge na aplicação.

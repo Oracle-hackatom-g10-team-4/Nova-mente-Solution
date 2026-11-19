@@ -1,0 +1,19 @@
+{
+  "file": "Atlas-Demo-Day-Fluido-60fps.mp4",
+  "seconds": 285,
+  "width": 1920,
+  "height": 1080,
+  "fps": 60,
+  "frames": 17100,
+  "audio_streams": 0,
+  "chapters": 14,
+  "source_fps": 25,
+  "interpolation": "linear com detecção de mudança de cena",
+  "transitions": "13 dissoluções de0.5s com centros nas marcações do roteiro",
+  "full_decode": "PASS",
+  "regular_pts": "PASS",
+  "sample_frames": 60,
+  "sample_distinct_frames": 60,
+  "bytes": 59920194,
+  "sha256": "88e794859d2865ddd032cde2df66020d3aab2566394f259347f5d7421ca6627c"
+}
