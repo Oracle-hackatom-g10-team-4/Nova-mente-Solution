@@ -2,7 +2,7 @@
 
 **Equipe 4 · ONE G10 Brasil**
 
-Roteiro para apresentar ao vivo. **4min45s planejados**, com **30 segundos para a abertura**, 27 segundos para grafo e trilhas e 15 segundos de margem. Os três clipes do PowerPoint são silenciosos e rodam junto com a fala. Faça o avanço manual.
+Roteiro para apresentar ao vivo. **4min45s planejados**, com **30 segundos para a abertura**, 27 segundos para o Atlas de conhecimento e as trilhas e 15 segundos de margem. Os três clipes do PowerPoint são silenciosos e rodam junto com a fala. Faça o avanço manual.
 
 Leia a fala em voz alta. As marcações [pausa] indicam o tempo de silêncio. Use a linha de direção para preparar o tom e o olhar.
 
@@ -96,9 +96,9 @@ E a segunda pergunta lá do começo? [pausa 0,5 s] No quiz, você responde antes
 
 ### Slide 14 · 3:30–3:57 · Seu estudo continua
 
-*Direção* · Comece pelo grafo à esquerda. Depois da segunda pausa, aponte para a trilha à direita.
+*Direção* · Aponte para o Atlas de conhecimento à esquerda. Após a segunda pausa, passe à trilha.
 
-Terminou o quiz? [pausa 0,5 s] No grafo de conhecimento, você vê quais materiais citam cada fonte e pode abrir o documento. [pausa 0,5 s] Na trilha de aprendizagem, você escolhe um objetivo, estuda em etapas e acompanha o progresso. Assim você sabe onde voltar e o que fazer a seguir.
+Terminou o quiz? [pausa 0,5 s] Na aba Atlas de conhecimento, você vê quais materiais citam cada fonte e pode abrir o documento. [pausa 0,5 s] Na trilha de aprendizagem, você escolhe um objetivo, estuda em etapas e acompanha o progresso. Assim você sabe onde voltar e o que fazer a seguir.
 
 ### Slide 15 · 3:57–4:09 · Quando falta evidência
 
