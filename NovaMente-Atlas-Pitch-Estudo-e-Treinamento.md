@@ -34,7 +34,7 @@ A dificuldade aparece quando chega a hora de explicar uma ideia ou executar uma 
 
 *Direção* · Clipe de 5,4 s. Aponte para a fonte selecionada e continue a fala.
 
-Como no NotebookLM, eu escolho as fontes antes de perguntar. [pausa 0,5 s] Aqui, quero entender redes. O Atlas prepara uma explicação com o material que trouxe.
+Pense num assistente de estudo que parte do seu material. [pausa 0,5 s] Eu escolho as fontes, faço uma pergunta e o Atlas monta a explicação a partir delas.
 
 ### Slide 05 · 1:15–1:30 · Um formato para cada momento
 
@@ -60,7 +60,7 @@ O guia está na tela. A explicação parece clara, como lá no começo. [pausa 1
 
 *Direção* · Clipe de 6,8 s. Aponte o leitor e acompanhe o realce da passagem.
 
-O leitor lembra um Kindle. [pausa 0,5 s] Leio o PDF inteiro, seleciono um trecho e posso copiá-lo para perguntar no chat. A citação realça a passagem original.
+É como um leitor digital. [pausa 0,5 s] Leio o PDF inteiro, seleciono um trecho e posso copiá-lo para perguntar no chat. A citação realça a passagem original.
 
 ### Slide 09 · 2:15–2:30 · Como a resposta ganha respaldo
 
