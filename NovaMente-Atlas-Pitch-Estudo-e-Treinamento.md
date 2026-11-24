@@ -2,7 +2,7 @@
 
 **Equipe 4 · ONE G10 Brasil**
 
-Roteiro para apresentar ao vivo. **4min45s planejados**, com **30 segundos para a abertura**, 15 segundos por slide depois dela e 15 segundos de margem. Os três clipes do PowerPoint são silenciosos e rodam junto com a fala. Faça o avanço manual.
+Roteiro para apresentar ao vivo. **4min45s planejados**, com **30 segundos para a abertura**, 27 segundos para grafo e trilhas e 15 segundos de margem. Os três clipes do PowerPoint são silenciosos e rodam junto com a fala. Faça o avanço manual.
 
 Leia a fala em voz alta. As marcações [pausa] indicam o tempo de silêncio. Use a linha de direção para preparar o tom e o olhar.
 
@@ -94,19 +94,19 @@ O Dreamer usa experiências de estudo para sugerir ajustes no jeito de orientar.
 
 E a segunda pergunta lá do começo? [pausa 0,5 s] No quiz, você responde antes de ver o retorno. Ele explica o acerto e mostra onde revisar.
 
-### Slide 14 · 3:30–3:45 · Explique com suas palavras
+### Slide 14 · 3:30–3:57 · Seu estudo continua
 
-*Direção* · Faça a pergunta ao público e deixe o silêncio trabalhar.
+*Direção* · Comece pelo grafo à esquerda. Depois da segunda pausa, aponte para a trilha à direita.
 
-Agora, sem olhar. [pausa 0,5 s] Como você explicaria uma rede privada na nuvem para alguém? [pausa 1 s] Travou? Você já sabe onde voltar.
+Terminou o quiz? [pausa 0,5 s] No grafo de conhecimento, você vê quais materiais citam cada fonte e pode abrir o documento. [pausa 0,5 s] Na trilha de aprendizagem, você escolhe um objetivo, estuda em etapas e acompanha o progresso. Assim você sabe onde voltar e o que fazer a seguir.
 
-### Slide 15 · 3:45–4:00 · Quando falta evidência
+### Slide 15 · 3:57–4:09 · Quando falta evidência
 
 *Direção* · Diga “faltava base” com clareza. Este caso vem da validação local.
 
 Também fizemos uma pergunta que o material não cobria. [pausa 0,5 s] O Atlas avisou que faltava base. Assim, você sabe quando procurar outra fonte.
 
-### Slide 16 · 4:00–4:15 · Da ideia à demonstração
+### Slide 16 · 4:09–4:20 · Da ideia à demonstração
 
 *Direção* · Conte o trabalho da equipe em três ações curtas.
 
@@ -114,13 +114,13 @@ Desenhamos o percurso em conjunto. Depois, juntamos interface, IA e infraestrutu
 
 ## Fechamento
 
-### Slide 17 · 4:15–4:30 · Do estudo ao treinamento de equipes
+### Slide 17 · 4:20–4:31 · Do estudo ao treinamento de equipes
 
 *Direção* · Retome as duas cenas do começo. Dê um tom de possibilidade.
 
-Na escola, uma aula pode virar revisão para a prova. [pausa 0,5 s] Na empresa, um manual interno pode virar guia e exercícios para treinar a equipe.
+Na escola, uma aula vira revisão para a prova. [pausa 0,5 s] Na empresa, um manual vira exercícios para treinar a equipe.
 
-### Slide 18 · 4:30–4:45 · Pergunte. Confira. Pratique.
+### Slide 18 · 4:31–4:45 · Pergunte. Confira. Pratique.
 
 *Direção* · Olhe para a câmera. Termine a tríade com firmeza.
 
