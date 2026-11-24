@@ -6,17 +6,17 @@ Roteiro para apresentar ao vivo. **4min30s planejados**, com **15 segundos por s
 
 ## Gancho
 
-### Slide 01 · 0:00–0:15 · Você saberia aplicar?
+### Slide 01 · 0:00–0:15 · A resposta chegou
 
-Uma estudante revisa para a prova. Uma empresa treina a equipe num sistema novo. A resposta da IA convence. De onde veio? Você saberia aplicar o que aprendeu?
+Sua equipe vai mudar um sistema, e você precisa entender como. Pesquisa na web ou pergunta à IA. A resposta parece clara. De onde veio? Você saberia aplicar?
 
-*Indicação de apresentação* · Faça uma pausa curta depois de “convence”.
+*Indicação de apresentação* · Faça uma pausa curta depois de “clara”.
 
 ## Problema
 
-### Slide 02 · 0:15–0:30 · Material em mãos, prática pela frente
+### Slide 02 · 0:15–0:30 · A mesma dúvida na sala de aula
 
-Quem estuda precisa decidir o que revisar. Quem treina uma equipe precisa transformar manuais e aulas em prática. Nos dois casos, juntar material é só o começo.
+A mesma dúvida aparece na véspera de uma prova. Entre aulas, anotações e buscas abertas, fica difícil decidir o que revisar e o que praticar.
 
 ### Slide 03 · 0:30–0:45 · A hora de explicar ou fazer
 
@@ -90,9 +90,9 @@ Também testamos o caminho inverso. Fizemos uma pergunta que o material não cob
 
 *Indicação de apresentação* · Caso observado em uma validação local com fonte sintética.
 
-### Slide 16 · 3:45–4:00 · Quem fez o Atlas
+### Slide 16 · 3:45–4:00 · Da ideia à demonstração
 
-Eu sou André, fiz arquitetura e full stack. Jadeilton cuidou da Oracle Cloud, Taylam do backend, Ebenezer da interface e Samuel dos testes. Juntos, ligamos leitura, explicação e prática.
+Em conjunto, desenhamos o percurso de estudo. Depois, juntamos o trabalho de interface, IA e infraestrutura, e testamos a jornada completa, da pergunta até o exercício.
 
 ## Fechamento
 
