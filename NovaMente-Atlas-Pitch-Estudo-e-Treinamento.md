@@ -46,11 +46,11 @@ O Atlas organiza o assunto em passos para quem está começando. Mas tem uma per
 
 ## Diferencial
 
-### Slide 08 · 2:00–2:15 · A origem a um clique
+### Slide 08 · 2:00–2:15 · Da resposta à fonte. E vice-versa.
 
-Veja. Eu seleciono o trecho. Quando clico na citação, a passagem fica destacada ao lado da explicação. Você pode comparar com o que a IA disse.
+Você pode ler o PDF inteiro ali, selecionar uma passagem e perguntar sobre ela no chat. No outro sentido, a citação abre e realça o trecho original.
 
-*Indicação de apresentação* · Clipe de 6,8 s. Acompanhe o cursor da citação até o trecho.
+*Indicação de apresentação* · Clipe de 6,8 s. Mostre a seleção manual e, depois, a passagem realçada pela citação. Para levar o trecho ao tutor, copie a seleção e use o chat.
 
 ### Slide 09 · 2:15–2:30 · Como a resposta ganha respaldo
 
