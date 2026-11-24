@@ -78,7 +78,7 @@ Se o seu material deixa uma dúvida aberta, o Atlas também pode buscar na web e
 
 *Direção* · Mostre Órion na tela. Passe pelo nome, pela cor e pela abordagem.
 
-Quer um tutor com a sua cara? [pausa 0,5 s] Na fábrica de agentes, você escolhe o nome, a aparência e como ele vai orientar seu estudo. Aqui, criei o Órion e escolhi uma abordagem que pede para eu explicar com minhas palavras para conferir se entendi.
+Com o material em mãos, quem vai te orientar? [pausa 0,5 s] Na fábrica de agentes, você escolhe nome, cor e abordagem. Aqui está o Órion. Escolhi um tutor que faz perguntas e depois me pede para explicar o assunto com minhas palavras. Assim vejo onde travei.
 
 ### Slide 12 · 3:01–3:18 · Os agentes também sonham
 
@@ -104,7 +104,7 @@ Terminou o quiz? [pausa 0,5 s] Na aba Atlas de conhecimento, você vê quais mat
 
 *Direção* · Diga “faltava base” com clareza. Este caso vem da validação local.
 
-Também fizemos uma pergunta que o material não cobria. [pausa 0,5 s] O Atlas avisou que faltava base. Isso orienta o próximo passo. Você procura uma fonte que cubra a lacuna e volta à pergunta com outra evidência em mãos.
+Em qualquer etapa, pode surgir uma dúvida que o material não cobre. [pausa 0,5 s] Testamos esse caso. O Atlas avisou que faltava base. Assim, você sabe quando procurar outra fonte e voltar à pergunta com mais contexto.
 
 ### Slide 16 · 4:11–4:20 · Da ideia à demonstração
 
