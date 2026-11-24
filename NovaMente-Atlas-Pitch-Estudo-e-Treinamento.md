@@ -2,7 +2,7 @@
 
 **Equipe 4 · ONE G10 Brasil**
 
-Roteiro para apresentar ao vivo. **4min45s planejados**, com **30 segundos para a abertura**, 25 segundos para o Atlas de conhecimento e as trilhas e 15 segundos de margem. Os três clipes do PowerPoint são silenciosos e rodam junto com a fala. Faça o avanço manual.
+Roteiro para apresentar ao vivo. **4min45s planejados**, com **30 segundos para a abertura**, 27 segundos para o Atlas de conhecimento e as trilhas e 15 segundos de margem. Os clipes do PowerPoint são silenciosos e rodam junto com a fala. Faça o avanço manual.
 
 Leia a fala em voz alta. As marcações [pausa] indicam o tempo de silêncio. Use a linha de direção para preparar o tom e o olhar.
 
@@ -68,45 +68,51 @@ O guia está na tela, com uma explicação em passos para quem começa a estudar
 
 O Atlas procura os trechos que ajudam a responder. [pausa 0,5 s] Outra IA atua como juiz e confere se a explicação tem apoio nas fontes. E você também pode abrir o texto e conferir por conta própria.
 
-### Slide 10 · 2:25–2:42 · A busca pode ir além
+### Slide 10 · 2:25–2:40 · A busca pode ir além
 
-*Direção* · Mantenha o tom explicativo. A imagem mostra a fonte usada na demo.
+*Direção* · Clipe de 4,5 s. Aponte a aba que abre o caminho da evidência. Depois, fale da busca complementar.
 
-Se o seu material deixa uma dúvida aberta, o Atlas também pode buscar na web e trazer referências para ampliar o contexto. [pausa 0,5 s] Com a avaliação ligada, o juiz ajuda a filtrar os resultados relevantes.
+Aqui eu abro o caminho da fonte usada. [pausa 0,5 s] Se falta contexto, o Atlas também pode buscar referências na web. Com a avaliação ligada, o juiz ajuda a filtrar resultados com base na pergunta.
 
-### Slide 11 · 2:42–3:01 · Crie o seu tutor
+### Slide 11 · 2:40–2:55 · Crie o seu tutor
 
-*Direção* · Mostre Órion na tela. Passe pelo nome, pela cor e pela abordagem.
+*Direção* · Clipe de 5,6 s. Acompanhe o nome, a cor e a escolha da abordagem.
 
-Com o material em mãos, quem vai te orientar? [pausa 0,5 s] Na fábrica de agentes, você escolhe nome, cor e abordagem. Aqui está o Órion. Escolhi um tutor que faz perguntas e depois me pede para explicar o assunto com minhas palavras. Assim vejo onde travei.
+Quem vai te orientar? [pausa 0,5 s] Na fábrica de agentes, você escolhe nome, cor e abordagem. Aqui, crio o Órion. Ele me ajuda a explicar com as minhas palavras e descobrir onde travei.
 
-### Slide 12 · 3:01–3:18 · Os agentes também sonham
+### Slide 12 · 2:55–3:13 · Os agentes também sonham
 
 *Direção* · Tom de história em “sonham”. Olhe para a câmera em “se adaptar a você”.
 
-Enquanto dormimos, consolidamos experiências. Os agentes também “sonham”. [pausa 0,5 s] Com sua permissão, o Dreamer guarda experiências de estudo e ajuda o Atlas a se adaptar a você. As sugestões são avaliadas antes de virar mudança. A memória é opcional.
+Enquanto dormimos, consolidamos experiências. Os agentes também “sonham”. [pausa 0,5 s] Com sua permissão, o Dreamer guarda experiências de estudo e ajuda o Atlas a se adaptar a você. As sugestões são avaliadas antes de virar mudança. Você decide se quer ligar a memória.
 
 ## Prova
 
-### Slide 13 · 3:18–3:30 · Entendeu? Hora de tentar
+### Slide 13 · 3:13–3:25 · Entendeu? Hora de tentar
 
 *Direção* · Clipe de 5,8 s. Aponte o feedback após a seleção da resposta.
 
 E a segunda pergunta lá do começo? [pausa 0,5 s] No quiz, você responde antes de ver o retorno. Ele explica o acerto e indica o que revisar a seguir.
 
-### Slide 14 · 3:30–3:55 · Seu estudo continua
+### Slide 14 · 3:25–3:37 · Atlas de conhecimento
 
-*Direção* · Aponte para o Atlas de conhecimento à esquerda. Após a segunda pausa, passe à trilha.
+*Direção* · Mostre a ligação entre a citação e o documento. Depois, avance para a trilha.
 
-Terminou o quiz? [pausa 0,5 s] Na aba Atlas de conhecimento, você vê quais materiais citam cada fonte e pode abrir o documento. [pausa 0,5 s] Na trilha de aprendizagem, você escolhe um objetivo, estuda em etapas e acompanha o progresso. Nesta trilha, a primeira etapa já está concluída, e a próxima está pronta. Depois, dá para retomar do mesmo ponto.
+O quiz mostra o que revisar. [pausa 0,5 s] No Atlas de conhecimento, vejo quais materiais citam cada fonte e posso abrir o documento para voltar à leitura da fonte.
 
-### Slide 15 · 3:55–4:11 · Quando falta evidência
+### Slide 15 · 3:37–3:52 · Trilhas de aprendizagem
+
+*Direção* · Clipe de 6,2 s. Aponte o objetivo e, depois, as etapas que aparecem.
+
+Coloco meu objetivo e crio a trilha. [pausa 0,5 s] O Atlas divide o estudo em etapas. Aqui, começo lendo e compreendendo a fonte, passo à revisão e posso retomar depois com o progresso salvo.
+
+### Slide 16 · 3:52–4:08 · Quando falta evidência
 
 *Direção* · Diga “faltava base” com clareza. Este caso vem da validação local.
 
 Em qualquer etapa, pode surgir uma dúvida que o material não cobre. [pausa 0,5 s] Testamos esse caso. O Atlas avisou que faltava base. Assim, você sabe quando procurar outra fonte e voltar à pergunta com mais contexto.
 
-### Slide 16 · 4:11–4:20 · Da ideia à demonstração
+### Slide 17 · 4:08–4:18 · Da ideia à demonstração
 
 *Direção* · Conte o trabalho da equipe em três ações curtas.
 
@@ -114,13 +120,13 @@ Desenhamos o percurso em conjunto. Depois, juntamos interface, IA e infraestrutu
 
 ## Fechamento
 
-### Slide 17 · 4:20–4:33 · Do estudo ao treinamento de equipes
+### Slide 18 · 4:18–4:32 · Do estudo ao treinamento de equipes
 
 *Direção* · Retome as duas cenas do começo. Dê um tom de possibilidade.
 
 Na escola, uma aula vira revisão para a prova. [pausa 0,5 s] Na empresa, um manual vira exercícios de treinamento. O estudo parte do material que você já usa no dia a dia.
 
-### Slide 18 · 4:33–4:45 · Pergunte. Confira. Pratique.
+### Slide 19 · 4:32–4:45 · Pergunte. Confira. Pratique.
 
 *Direção* · Olhe para a câmera. Termine a tríade com firmeza.
 
