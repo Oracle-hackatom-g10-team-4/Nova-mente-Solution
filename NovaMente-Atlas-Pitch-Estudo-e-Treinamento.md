@@ -30,11 +30,11 @@ A dificuldade aparece quando chega a hora de explicar uma ideia ou executar uma 
 
 ## Solução
 
-### Slide 04 · 1:00–1:15 · Do seu material à sua pergunta
+### Slide 04 · 1:00–1:15 · Escolha as fontes
 
-*Direção* · Fale enquanto o clipe de 5,4 s mostra a abertura do material.
+*Direção* · Clipe de 5,4 s. Aponte para a fonte selecionada e continue a fala.
 
-No Atlas, você começa com o material que já tem e uma pergunta. [pausa 0,5 s] Aqui, quero aprender sobre redes. Peço uma explicação para quem está começando.
+Como no NotebookLM, eu escolho as fontes antes de perguntar. [pausa 0,5 s] Aqui, quero entender redes. O Atlas prepara uma explicação com o material que trouxe.
 
 ### Slide 05 · 1:15–1:30 · Um formato para cada momento
 
@@ -42,11 +42,11 @@ No Atlas, você começa com o material que já tem e uma pergunta. [pausa 0,5 s]
 
 Da mesma fonte, você pede um guia, cartões, um resumo ou um quiz. [pausa 0,5 s] O formato muda conforme o que você precisa fazer.
 
-### Slide 06 · 1:30–1:45 · Tutoria do seu jeito
+### Slide 06 · 1:30–1:45 · Converse com os agentes
 
-*Direção* · Use um tom próximo. Marque a cadência das três frases curtas.
+*Direção* · Diga “no chat” olhando para a câmera. Marque as três formas de ajudar.
 
-Pensa em professores diferentes. [pausa 0,5 s] Um explica com calma. Outro conduz com perguntas. Outro propõe um exercício. No Atlas, você pode trocar de abordagem.
+No chat, você conversa com os agentes sobre suas fontes. [pausa 0,5 s] Um explica com calma, outro conduz com perguntas, outro propõe exercícios. Você pode trocar de abordagem.
 
 ### Slide 07 · 1:45–2:00 · A explicação está pronta
 
@@ -58,9 +58,9 @@ O guia está na tela. A explicação parece clara, como lá no começo. [pausa 1
 
 ### Slide 08 · 2:00–2:15 · Da resposta à fonte. E vice-versa.
 
-*Direção* · Clipe de 6,8 s. Acompanhe a seleção e o realce, nessa ordem.
+*Direção* · Clipe de 6,8 s. Aponte o leitor e acompanhe o realce da passagem.
 
-Seleciono um trecho. [pausa 0,5 s] Clico na citação, e o Atlas realça a passagem usada. Dá para ler o PDF inteiro e copiar um trecho para perguntar no chat.
+O leitor lembra um Kindle. [pausa 0,5 s] Leio o PDF inteiro, seleciono um trecho e posso copiá-lo para perguntar no chat. A citação realça a passagem original.
 
 ### Slide 09 · 2:15–2:30 · Como a resposta ganha respaldo
 
@@ -74,17 +74,17 @@ O Atlas procura os trechos que ajudam a responder. [pausa 0,5 s] Depois, outra I
 
 Se a dúvida pede mais contexto, o Atlas pode buscar na web. [pausa 0,5 s] Com a avaliação ligada, o juiz ajuda a filtrar resultados relevantes.
 
-### Slide 11 · 2:45–3:00 · Mais de um olhar
+### Slide 11 · 2:45–3:00 · Crie o seu tutor
 
-*Direção* · Diferencie os dois tutores com a voz. Feche a frase no juiz.
+*Direção* · Mostre Órion na tela. Passe pelo nome, pela cor e pela abordagem.
 
-A fábrica de agentes reúne olhares diferentes. [pausa 0,5 s] Um tutor pode propor uma explicação. Outro, um exercício. O juiz ajuda a comparar clareza e respaldo.
+Quer um tutor com a sua cara? [pausa 0,5 s] Na fábrica de agentes, você escolhe o nome, a aparência e o jeito como ele vai orientar seu estudo.
 
-### Slide 12 · 3:00–3:15 · Seu estudo, no seu ritmo
+### Slide 12 · 3:00–3:15 · Os agentes também sonham
 
-*Direção* · Diminua o ritmo na última frase. Ressalte a escolha do usuário.
+*Direção* · Dê um tom de história a “sonham”. Feche olhando para a câmera em “se adaptar a você”.
 
-O Dreamer usa experiências de estudo para sugerir ajustes no jeito de orientar. [pausa 1 s] Você decide se quer ligar a memória.
+Enquanto dormimos, consolidamos experiências. Os agentes também “sonham”. [pausa 0,5 s] Com sua permissão, o Dreamer guarda experiências de estudo e ajuda o Atlas a se adaptar a você.
 
 ## Prova
 
