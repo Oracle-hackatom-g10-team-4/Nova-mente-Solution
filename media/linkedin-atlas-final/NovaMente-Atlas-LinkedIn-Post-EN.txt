@@ -1,0 +1,9 @@
+A little late sharing this, but I’m glad I got to present NovaMente Atlas with Team 4 as a finalist at the Oracle Next Education (ONE) G10 Brazil Hackathon.
+
+Atlas helps students and teams learn from the materials they already have. The hardest part was making a simple study session work reliably across the whole stack. A citation had to bring the learner back to the right passage. Study progress had to survive a new session. And we had to make the whole thing work live on Oracle Cloud.
+
+I led the system architecture and worked across the stack. The final pushed me to explain those decisions through a single learning journey in five minutes. I’m proud of what Ebenezer, Jadeilton, Kauã, Samuel, Taylam, and I built together.
+
+Thanks to Oracle Next Education, Alura, and No Country for bringing us together. Here’s a short look at what we got working.
+
+#OracleNextEducation #HackathonONE #Alura #NoCountry #SoftwareEngineering #EdTech
