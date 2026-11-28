@@ -1,5 +1,7 @@
 # NovaMente Atlas · Grand Final media
 
+[First-place announcement and two-minute victory film](victory/README.md)
+
 Team 4’s LinkedIn media kit for the Oracle Next Education G10 Brazil Hackathon.
 
 - [Download the ZIP](NovaMente-Atlas-LinkedIn-Pack.zip)
